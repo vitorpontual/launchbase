@@ -2,7 +2,7 @@
 
 :root {
     --primary-green: rgb(70, 200, 70);
-    --default-color: rgb(49, 49, 107);
+    --default-color: rgb(113, 89, 193);
 }
 
 * {
@@ -25,16 +25,29 @@ header {
     background-color: var(--default-color);
     display: flex;
     justify-content: space-around;
-    padding: 30px;
-    margin-bottom: 50px;
-
+    padding: 5px;
+    margin-bottom: 30px;
 }
+
+
+#content {
+    background-color: black;
+    justify-content: space-between;
+}
+
+.menu,
+.social {
+    display: flex;
+    margin-left: 20px;
+}
+
 
 .social a,
 .menu a{
     color: white;
     text-decoration: none;
-    padding: 20px;
+    padding: 30px;
+
 }
 
 .social a:hover,
@@ -83,7 +96,7 @@ section {
 }
 
 .purple {
-    color: rgb(180, 83, 180);
+    color: var(--default-color);
 }
 
 .orange {
@@ -95,13 +108,64 @@ section {
 }
 
 .purple1:hover{
-    border: 3px solid purple;
+    border: 3px groove var(--default-color);
 }
 .green1:hover{
-    border: 2px solid #59fa7b;
+    border: 2px groove #59fa7b;
 }
 .orange1:hover{
-    border: 2px solid orange;
+    border: 2px groove orange;
+}
+
+.um{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: rgb(113, 89, 193);
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(113, 89, 193);
+    border-image: initial;
+}
+
+.two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+    color: rgb(253, 149, 31);
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(253, 149, 31);
+    border-image: initial;
+}
+
+.three {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+    color: rgb(4, 211, 97);
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(4, 211, 97);
+    border-image: initial;
 }
 
 .cards {
@@ -135,7 +199,9 @@ section {
     grid-template-columns: 1fr 1fr 1fr;
     max-width: 1050px;
     margin: 0 auto;
-    gap: 40px
+    background: url('https://skylab.rocketseat.com.br/static/media/FeaturedCardBg.40a7d53e.png') 0% 0% / cover;
+    gap: 40px;
+    transition: all 0.2s ease 0s;
 }
 
 .card1 {
