@@ -1,0 +1,64 @@
+{% extends 'layout.njk' %}
+
+
+{% block head %}
+    <title>Portfolio - Vitor Pontual</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+{% endblock head %}
+
+{% block content %}
+
+    <section class="cards">
+        <div class="card" id='XcU9GEUZTQA'>
+            <div class="card__image-container">
+                <img src="https://img.youtube.com/vi/XcU9GEUZTQA/maxresdefault.jpg" alt="Video Aula">
+            </div>
+            <div class="card__content">
+                <p>Iniciando no React Native | Diego Fernandes
+                </p>
+            </div>
+            <div class="card__info">
+                <p>40 min</p>
+                <p class="card__price">Free</p>
+            </div>
+        </div>
+        <div class="card" id='2G_mWfG0DZE'>
+            <div class="card__image-container">
+                <img src="https://img.youtube.com/vi/2G_mWfG0DZE/maxresdefault.jpg" alt="Video Aula">
+            </div>
+            <div class="card__content">
+                <p>Testes no NodeJS aplicando TDD com Jest | Diego Fernandes</p>
+            </div>
+            <div class="card__info">
+                <p>80 min</p>
+                <p class="card__price">Free</p>
+            </div>
+        </div>
+        <div class="card" id='kqBCHYf_adA'>
+            <div class="card__image-container">
+                <img src="https://img.youtube.com/vi/kqBCHYf_adA/maxresdefault.jpg" alt="Video Aula">
+            </div>
+            <div class="card__content">
+                <p>Deploy de aplicações NodeJS à AWS com Docker | Diego Fernandes</p>
+            </div>
+            <div class="card__info">
+                <p>26 min</p>
+                <p class="card__price">Free</p>
+            </div>
+        </div>
+    </section>
+    <div class="modal-overlay">
+        <div class="modal">
+            <a class="close-modal">
+                <i class="material-icons">close</i>
+            </a>
+            <div class="modal-content">
+                <!-- video aqui -->
+                <iframe src="" frameborder="0"></iframe>
+            </div>
+
+        </div>
+    </div>  
+    <script src='script.js'></script>
+{% endblock content %}
