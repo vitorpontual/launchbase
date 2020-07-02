@@ -96,11 +96,15 @@ header {
     grid-template-columns: 1fr 1fr 1fr;
     max-width: 800px;
     margin: 0 auto;
-    gap: 20px
+    gap: 20px;
+    padding-top: 30px;
+    
 }
 
 .card {
     background-color: var(--color-rocket);
+    display: grid;
+    cursor: pointer;
 }
 
 .card__image-container img{
@@ -115,6 +119,7 @@ header {
 .card__info {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 
 .card__price {
@@ -171,4 +176,21 @@ iframe {
 .not-found {
     padding: 32px;
     text-align: center;
+}
+
+/* === FEATURED === */
+
+.card__image-container {
+    position: relative;
+}
+
+.featured {
+    background-color: var(--color-green);
+    color: 111;
+    text-align: center;
+    padding: 2px 8px;
+    position: absolute;
+    right: 10px;
+    top: 131px;
+    border-radius: 16px;
 }

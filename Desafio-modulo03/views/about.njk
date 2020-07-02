@@ -6,14 +6,15 @@
 
 {% block content %}
     <div id="wrapper">
-        <img src="https://avatars2.githubusercontent.com/u/42771088?s=460&u=afb4d0452847fb340a507874ac521c707c69a7c1&v=4" alt="Vitor Pontual">
-        <h1>Vitor Pontual</h1>
-        <h2>Web Developer</h2>
-        <p>Estudante de programação full-stack pela Rockseat. </p>
+        <img src="{{about.avatar_url}}" alt="Vitor Pontual">
+        <h1>{{about.name}}</h1>
+        <h2>{{about.role}}}</h2>
+        <p>{{about.description}}</p>
     </div>
     <div id='links-footer' class='links'>
-        <a href="https://github.com/vitorpontual" target='_blank'>Github</a>
-        <a href="https://twitter.com/vitorpguedes" target='_blank'>Twitter</a>
-        <a href="https://www.linkedin.com/in/vitor-pontual/ " target='_blank'>LinkedIn</a>
+        {% for variable in about.links %}
+            <a href="variable.url" target='_blank'>{{variable.name}}</a>
+        {% endfor %}
+        
     </div>
 {% endblock content %}
