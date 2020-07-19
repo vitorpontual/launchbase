@@ -23,8 +23,6 @@ Tabela de conteúdos
   * [Desafio 04](#desafio04)
 <!--te-->
 
-Soluções dos Desafios
-
 ## Desafio 01
 
 <h3 align='center'>Introdução a programação web</h3>
@@ -59,6 +57,13 @@ Soluções dos Desafios
   <li>NODEMON</li>
   <li>Nunjucks</li>
 </ul>
+
+## Desafio 04
+
+<h3 align='center'>Controle de academia</h3>
+
+<p>Neste desafio o objetivo é criar uma página usando método C.R.U.D</p>
+
 
 ![badge](https://img.shields.io/badge/build-passed-yellow)
 
