@@ -41,7 +41,7 @@ Soluções dos Desafios
 
 ## Desafio 02
 
-<h3 align='center>Introdução ao Front-end</h3>
+<h3 align='center'>Introdução ao Front-end</h3>
 <ul>
   <li>HTML</li>
   <li>CSS</li>
@@ -50,8 +50,8 @@ Soluções dos Desafios
 
 ## Desafio 03
 
-<h3 align='center>Introdução ao Back-end</h3>
-<p>Tecnologias Utilizadas</p>
+<h3 align='center'>Introdução ao Back-end</h3>
+<p align='center'>Tecnologias Utilizadas</p>
           
 <ul>
   <li>Node.JS</li>
