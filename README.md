@@ -17,10 +17,10 @@ construir aplicações de rede rápidas e escaláveis.</p>
 Tabela de conteúdos
 =================
 <!--ts-->
-  * [Desafio 01](#desafio01)
-  * [Desafio 02](#desafio02)
-  * [Desafio 03](#desafio03)
-  * [Desafio 04](#desafio04)
+  * [Desafio 01](#desafio-01)
+  * [Desafio 02](#desafio-02)
+  * [Desafio 03](#desafio-03)
+  * [Desafio 04](#desafio-04)
 <!--te-->
 
 ## Desafio 01
