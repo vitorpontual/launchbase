@@ -27,7 +27,7 @@ Soluções dos Desafios
 
 ## Desafio 01
 
-<p align='center'>Introdução a programação web</p>
+<h3 align='center'>Introdução a programação web</h3>
 <ul>
   <li>Comentários, Strings e Numbers</li>
   <li>If/ Else</li>
@@ -41,7 +41,7 @@ Soluções dos Desafios
 
 ## Desafio 02
 
-<p align='center'>Introdução ao Front-end</p>
+<h3 align='center>Introdução ao Front-end</h3>
 <ul>
   <li>HTML</li>
   <li>CSS</li>
@@ -50,8 +50,9 @@ Soluções dos Desafios
 
 ## Desafio 03
 
-<p align='center>Introdução ao Back-end</p>
+<h3 align='center>Introdução ao Back-end</h3>
 <p>Tecnologias Utilizadas</p>
+          
 <ul>
   <li>Node.JS</li>
   <li>EXPRESS</li>
