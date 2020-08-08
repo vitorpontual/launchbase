@@ -64,6 +64,22 @@ Tabela de conteúdos
 
 <p>Neste desafio o objetivo é criar uma página usando método C.R.U.D</p>
 
+<ul>
+    <li>exportes.modules['show, create, edit, put and delete']</li>
+    <li>Modulos 
+        <ul>
+            <li>Browser-sync</li>
+            <li>npm-run-all</li>
+            <li>method-override</li>
+        </ul>
+    <li>CSS Animation e Transições</li>
+    <li>Página Fields</li>
+    <li>Routes</li>
+    <li>HTML method="POST"</li>
+    <li>HTML action='_method=PUT/DELETE'</li>
+</ul>
+        
+
 
 ![badge](https://img.shields.io/badge/build-passed-yellow)
 
