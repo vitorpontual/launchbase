@@ -10,43 +10,26 @@
 {% block content %}
 
     <section class="cards">
-        <div class="card" id='XcU9GEUZTQA'>
-            <div class="card__image-container">
-                <img src="https://img.youtube.com/vi/XcU9GEUZTQA/maxresdefault.jpg" alt="Video Aula">
+        {% for item in items %}
+        
+            <div class="card" id='{{item.id}}'>
+                <div class="card__image-container">
+                    <img src="https://img.youtube.com/vi/{{item.id}}/maxresdefault.jpg" alt="Video Aula">
+                    {% if item.featured %}
+                        <div class="featured">Featured</div>
+                    {% endif %}
+                </div>
+                <div class="card__content">
+                    <p>{{item.description}}
+                    </p>
+                </div>
+                <div class="card__info">
+                    <p>{{item.duration}}</p>
+                    <p class="card__price">{{item.price}}</p>
+                </div>
             </div>
-            <div class="card__content">
-                <p>Iniciando no React Native | Diego Fernandes
-                </p>
-            </div>
-            <div class="card__info">
-                <p>40 min</p>
-                <p class="card__price">Free</p>
-            </div>
-        </div>
-        <div class="card" id='2G_mWfG0DZE'>
-            <div class="card__image-container">
-                <img src="https://img.youtube.com/vi/2G_mWfG0DZE/maxresdefault.jpg" alt="Video Aula">
-            </div>
-            <div class="card__content">
-                <p>Testes no NodeJS aplicando TDD com Jest | Diego Fernandes</p>
-            </div>
-            <div class="card__info">
-                <p>80 min</p>
-                <p class="card__price">Free</p>
-            </div>
-        </div>
-        <div class="card" id='kqBCHYf_adA'>
-            <div class="card__image-container">
-                <img src="https://img.youtube.com/vi/kqBCHYf_adA/maxresdefault.jpg" alt="Video Aula">
-            </div>
-            <div class="card__content">
-                <p>Deploy de aplicações NodeJS à AWS com Docker | Diego Fernandes</p>
-            </div>
-            <div class="card__info">
-                <p>26 min</p>
-                <p class="card__price">Free</p>
-            </div>
-        </div>
+        {% endfor %}
+        
     </section>
     <div class="modal-overlay">
         <div class="modal">

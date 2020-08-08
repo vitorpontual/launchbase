@@ -1,0 +1,18 @@
+main {
+    width: 940px;
+    height: 930px;
+    margin: 0 auto;
+}
+
+main h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #111111;
+}
+
+main p {
+    font-size: 18px;
+    color: #444444;
+}
+
+

@@ -1,0 +1,158 @@
+:root {
+    --green-color: #04D361;
+    --purple-color: #7159C1;
+    --orange-color: #FD951F;
+    --gray-color: #87868b;
+}
+
+body {
+    background: url(https://app.rocketseat.com.br/static/media/card.3b7ad20d.png) 0% 0% / cover;
+}
+
+section {
+    margin: 0 auto;
+    padding-top: 76px;
+}
+.cards {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+}
+
+.card {
+    background: url(https://app.rocketseat.com.br/static/media/card.3b7ad20d.png) 0% 0% / cover;
+
+    width: 440px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5%;
+    transition: all 0.2s ease 0s;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#starter, #launchbase, #gostack{
+    border: 2px solid #2525259d;
+
+}
+
+#starter:hover {
+    border: 3px solid var(--purple-color);
+}
+
+#launchbase:hover {
+    border: 3px solid var(--orange-color)
+}
+
+#gostack:hover {
+    border: 3px solid var(--green-color);
+}
+
+.starter{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    
+    font: 18px;
+    color: var(--purple-color);
+
+    border-radius: 50%;
+    border: 2px solid var(--purple-color);
+}
+
+.launchbase{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    
+    font: 18px;
+    color: var(--orange-color);
+
+    border-radius: 50%;
+    border: 2px solid var(--orange-color);
+}
+
+ .gostack{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    
+    font: 18px;
+    color: var(--green-color);
+
+    border-radius: 50%;
+    border: 2px solid var(--green-color);
+}
+
+.card .purple {
+    color: var(--purple-color);
+    font-weight: bold;
+}
+
+.card .orange {
+    color: var(--orange-color);
+    font-weight: bold;
+
+}
+
+.card .green {
+    color: var(--green-color);
+    font-weight: bold;
+
+}
+
+.card .card__content {
+    color: var(--gray-color);
+    padding: 30px;
+}
+
+.card .card__info {
+    width: 80%;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: var(--gray-color);
+    margin-bottom: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card .card__price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1600x;
+    height: 35px;
+    border-radius: 7px;
+    margin-left: 20px;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+
+}
+
+.price_purple {
+    background-color: var(--purple-color);
+}
+
+.price_orange{
+    background-color: var(--orange-color)
+}
+
+.price_green {
+    background-color: var(--green-color);
+}
+

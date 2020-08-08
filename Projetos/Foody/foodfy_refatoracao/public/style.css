@@ -1,0 +1,186 @@
+/* --- ABOUT PAGE --- */
+
+
+.about_main {
+    width: 940px;
+    height: 90vh;
+    margin: 0 auto;
+   
+}
+
+.about_main h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #111111;
+}
+
+.about_main p {
+    font-size: 18px;
+    color: #444444;
+}
+
+/* --- INDEX/RECIPE PAGES --- */
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    padding-top: 12px;
+    width: 940px;
+    margin: 0 auto;
+    
+}
+
+.card {
+    margin-bottom: 24px;
+}
+
+.card__content img {
+    width: 300px;
+    height: 140px;
+    border-radius: 15px;
+}
+
+.card__info {
+    padding-top: 15px ;
+}
+
+.card__content h3 {
+    font-size: 18px;
+}
+
+.card__content p {
+    opacity: 0.5;
+    font-size: 14px;
+}
+
+
+/* --- INDEX PAGE --- */
+
+
+.banner {
+    background-color: #FBDFDB ;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    width: 940px;
+    height: 366px;
+    border-radius: 30px;
+    margin: 0 auto 30px auto;
+}
+
+.content__banner {
+    margin-left: 115px;
+}
+
+.banner h1 {
+    width: 314px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.banner p {
+    width: 316px;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.banner img {
+    padding-top: 62px;
+    margin-left: 130px;
+}
+
+section {
+    width: 954px;
+    padding: 30px 0;
+    margin: 0 auto;
+}
+
+section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+
+/* --- DETAIL PAGE --- */
+
+.content {
+    width: 940px;
+    margin: 0 auto;
+}
+
+.banner__details img {
+    width: 940px;
+    height: 280px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.info__details {
+    text-align: center;
+
+}
+
+.info__details h4 {
+    font-size: 36px;
+}
+
+.info__details p {
+    color: #777;
+    font-size: 20px;
+}
+
+.instrucions h4 {
+    font-size: 24px;
+    margin: 30px 0;
+}
+
+.instrucions {
+    padding: 32px;
+}
+
+.instrucions button {
+    font-size: 12px;
+    color: #999999;
+    background: none;
+    margin-left: 13px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.ingredients .title,
+.preparation .title,
+.information .title {
+    display: flex;
+    align-items: center;
+}
+
+.instrucions ul {
+    margin-left: 20px;
+}
+
+.instrucions ul li {
+    font-size: 18px;
+    color: #444444;
+    line-height: 27px;
+}   
+
+.information p {
+    margin-bottom: 70px;
+    color: #444444;
+    font-size: 18px;
+    text-align: justify;
+    white-space: pre-line;
+    line-height: 27px;
+}
+
+/* --- ACTIVE/DESACTIVE */
+
+.hide {
+    display: block;
+}
+
+.hide.active {
+    display: none;
+}
