@@ -1,0 +1,14 @@
+{
+  "teachers": [
+    {
+      "id": "1",
+      "avatar_url": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80",
+      "name": "Vitor Pontual",
+      "birth": 678931200000,
+      "grau": "Ensino Superior",
+      "aula": "D",
+      "services": "Python, Javascript",
+      "created_at": 1596896394895
+    }
+  ]
+}
