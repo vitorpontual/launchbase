@@ -25,7 +25,7 @@ Tabela de conteúdos
 
 ## Desafio 01
 
-<h3 href='https://github.com/vitorpontual/launchbase/tree/master/Desafio/Desafios' align='center'>Introdução a programação web</h3>
+<h3 align='center'><a href='https://github.com/vitorpontual/launchbase/tree/master/Desafio/Desafios'>Introdução a programação web</a></h3>
 <ul>
   <li>Comentários, Strings e Numbers</li>
   <li>If/ Else</li>
@@ -39,7 +39,7 @@ Tabela de conteúdos
 
 ## Desafio 02
 
-<h3 href='https://github.com/vitorpontual/launchbase/tree/master/Desafio/Desafios-modulo2' align='center'>Introdução ao Front-end</h3>
+<h3 align='center'><a href='https://github.com/vitorpontual/launchbase/tree/master/Desafio/Desafios-modulo2'>Introdução ao Front-end</a></h3>
 <ul>
   <li>HTML</li>
   <li>CSS</li>
@@ -48,7 +48,7 @@ Tabela de conteúdos
 
 ## Desafio 03
 
-<h3 href='https://github.com/vitorpontual/launchbase/tree/master/Desafio/Desafio-modulo03' align='center'>Introdução ao Back-end</h3>
+<h3 align='center'><a href='https://github.com/vitorpontual/launchbase/tree/master/Desafio/Desafio-modulo03'>Introdução ao Back-end</a></h3>
 <p align='center'>Tecnologias Utilizadas</p>
           
 <ul>
@@ -60,7 +60,7 @@ Tabela de conteúdos
 
 ## Desafio 04
 
-<h3 href='https://github.com/vitorpontual/launchbase/tree/master/Desafio/desafio-modulo4' align='center'>Controle de academia</h3>
+<h3 align='center'><a href='https://github.com/vitorpontual/launchbase/tree/master/Desafio/desafio-modulo4'>Controle de academia</a></h3>
 
 <p>Neste desafio o objetivo é criar uma página usando método C.R.U.D</p>
 
