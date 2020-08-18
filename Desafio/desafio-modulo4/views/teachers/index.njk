@@ -10,14 +10,15 @@
 	     </tr>
 	  </thead>
 	  <tbody>
-	     :% for teacher in teachers %}
+	    {% for teacher in teachers %}
 		<tr>
-		  <td>{{teacher.name}}</td>
-		  <td>{{teacher.services}}</td>
+		  <td>{{ teacher.name }}</td>
+		  <td>{{ teacher.services }}</td>
 		</tr>
-	     {% endfor %}
+	    {% endfor %}
 	  </tbody>
 
        </table>
+    </div> 
 
-{% endblock content %}
+{% endblock content %} 
