@@ -1,0 +1,71 @@
+<div class="item">
+    <div>Avatar Url</div>
+    <div>
+        <input 
+            type="url" 
+            name="avatar_url" 
+	    value="{{student.avatar_url}}"
+	    placeholder="http://">
+    </div>
+</div>
+
+<div class="item">
+    <div>Nome</div>
+    <div>
+        <input 
+            type="text" 
+            name="name" 
+	    value='{{student.name}}'
+	    placeholder="Inserir nome completo">
+    </div>
+</div>
+
+<div class="item">
+   <div>Email</div>
+   <div>
+      <input 
+	type="email" 
+	name="email" 
+	value="{{student.email}}">
+   </div>
+</div>
+
+<div class="item">
+    <div>Data de Nascimento</div>
+    <div>
+        <input 
+            type="date" 
+            name="birth" 
+            value="{{student.birth}}">
+    </div>
+</div>
+
+
+
+<div class="item">
+   <div>Ano Escolar</div>
+   <div>
+      <select name="schoolyear">
+	 <option value="5EF" {% if student.schoolyear == "5EF"%} selected {% endif %}>5º ano do ensino fundamental</option>
+	 <option value="6EF" {% if student.schoolyear == "6EF"%} selected {% endif %}>6º ano do ensino fundamental</option>
+	 <option value="7EF" {% if student.schoolyear == "7EF"%} selected {% endif %}>7º ano do ensino fundamental</option>
+	 <option value="8EF" {% if student.schoolyear == "8EF"%} selected {% endif %}>8º ano do ensino fundamental</option>
+	 <option value="9EF" {% if student.schoolyear == "9EF"%} selected {% endif %}>9º ano do ensino fundamental</option>
+	 <option value="1EM" {% if student.schoolyear == "1EM"%} selected {% endif %}>1º ano do ensino médio</option>
+	 <option value="2EM" {% if student.schoolyear == "2EM"%} selected {% endif %}>2º ano do ensino médio</option>
+	 <option value="3EM" {% if student.schoolyear == "3EM"%} selected {% endif %}>3º ano do ensino médio</option>
+      </select>
+   </div>
+</div>
+
+<div class="item">
+   <div>Carga Horária Semanal</div>
+   <div>
+      <input 
+	 type="number" 
+	 name="weekly" 
+	 value="{{student.weekly}}">
+   </div>
+</div>
+
+<button type="submit">Salvar</button>
