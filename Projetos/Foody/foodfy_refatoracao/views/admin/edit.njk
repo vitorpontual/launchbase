@@ -1,7 +1,30 @@
 {% extends 'admin.njk' %}
 
+{% block style %}
+   <link rel="stylesheet" href="/admin/card.css">
+{% endblock style %}
 
-{% block content %}
+{% block content %} 
+   
+  <div class="card">
+      <section class="form-detail">
+	 <h2>Editar Receita</h2>
+
+	 <form id="form-delete" method='POST' action="/admin/recipes?_method=DELETE">
+	    <input type="hidden" name="id" value={{recipes.id}}>
+	    <button class="del" type='submit'>Apagar</button>
+	 </form>
 
 
+	 <form method='POST' action="/admin/recipes?_method=PUT">
+
+	    <input type="hidden" name="id" value={{recipes.id}}>
+	 {% include 'admin/fields.njk' %}
+
+	 </form>
+
+
+      </section>
+
+  </div>
 {% endblock content %}

@@ -7,6 +7,46 @@ exports.index = (request, response) => {
    return response.render('admin/index', { recipes: data.recipes })
 }
 
+// Create
+
+exports.create = (request, response) => {
+   return response.render('admin/create')
+}
+
+// Post
+
+exports.post = (request, response) => {
+
+   const keys = Object.keys(req.body)
+
+   for (key of keys) {
+      if (request.body[key] == "") {
+	 return res.send('Please, fill all fields')
+      }
+   }
+
+   let { image, title, author, ingredients, preparation, information } = req.body
+
+   const id = Number(data.recipes.length + 1)
+
+   data.recipes.push({
+      id,
+      image,
+      title,
+      author,
+      ingredients,
+      preparation,
+      information,
+   })
+
+   fs.writeFile('data.json', JSON.stringify(data, null, 2), err => {
+      if(err) {
+	 console.log(err)
+      }
+      return response.redirect("/admin/recipes")
+   })
+}
+   
 // show
 
 exports.show = (request, response) => {

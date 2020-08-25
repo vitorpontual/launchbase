@@ -43,7 +43,9 @@ header img {
 
 .footer {
    padding-top: 32px;
-   color: white
+   color: white;
+   position: absolute;
+   bottom: -520px;
 }
 
 
