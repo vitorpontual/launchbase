@@ -1,0 +1,64 @@
+{% extends 'layout.njk' %}
+
+{% block title %}
+    <title>{{items.title}} por {{items.author}}</title>
+{% endblock title %}
+
+{% block style %}
+    <link rel="stylesheet" href="/detail.css">
+{% endblock style %}
+
+{% block content %}
+    <div class='content'>
+        <div class="banner__details">
+            <img src="{{items.image2}}" alt="{{items.title}}">
+        </div>
+
+        <div class="info__details">
+            <h4>{{items.title}}</h4>
+            <p class="author">por {{items.author}}</p>
+        </div>
+
+        <div class="instrucions">
+
+            <div class="ingredients">
+                <div class="title">
+                    <h4>Ingredientes</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <div class="hide">
+                    {% for ingredient in items.ingredients %}
+                    <ul>
+                        <li>{{ingredient}}</li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="preparation">
+                <div class="title">
+                    <h4>Modo de preparo</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <div class="hide">
+                    {% for item in items.preparation %}
+                    <ul>
+                        <li>{{item}}</li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="information">
+                <div class="title">
+                    <h4>Informações adicionais</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <p class="hide">{{items.information}}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src='/script.js'></script>
+{% endblock content %}
