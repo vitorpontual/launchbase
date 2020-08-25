@@ -17,15 +17,15 @@ exports.create = (request, response) => {
 
 exports.post = (request, response) => {
 
-   const keys = Object.keys(req.body)
+   const keys = Object.keys(request.body)
 
    for (key of keys) {
       if (request.body[key] == "") {
-	 return res.send('Please, fill all fields')
+	 return response.send('Please, fill all fields')
       }
    }
 
-   let { image, title, author, ingredients, preparation, information } = req.body
+   let { image, title, author, ingredients, preparation, information } = request.body
 
    const id = Number(data.recipes.length + 1)
 
@@ -53,11 +53,13 @@ exports.show = (request, response) => {
 
    const recipeIndex = request.params.id
 
+   const recipes = {...data.recipes[recipeIndex], id:recipeIndex}
+
    console.log(recipeIndex)
    console.log(request.params.title)
    console.log(request.params.id)
 
-   return response.render('admin/show', { recipes : data.recipes[recipeIndex] })
+   return response.render('admin/show', { recipes })
 }
 
 // Edit
