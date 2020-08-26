@@ -1,186 +1,257 @@
-/* --- ABOUT PAGE --- */
+/* Roboto Regular and Bold */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Default and Layout Page */
 
-.about_main {
-    width: 940px;
-    height: 90vh;
-    margin: 0 auto;
-   
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-family: 'Roboto', sans-serif
 }
 
-.about_main h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #111111;
+.content {
+   background-color: #fff;
+   max-width: 940px;
+   margin: 0 auto;
 }
 
-.about_main p {
-    font-size: 18px;
-    color: #444444;
+.link-logo {
+   margin: 0;
+   padding: 0;
+   border: 0;
 }
 
-/* --- INDEX/RECIPE PAGES --- */
-
-.cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 5px;
-    padding-top: 12px;
-    width: 940px;
-    margin: 0 auto;
-    
+header {
+   padding: 30px 0;
 }
 
-.card {
-    margin-bottom: 24px;
+header, main{
+   max-width: 940px;
 }
 
-.card__content img {
-    width: 300px;
-    height: 140px;
-    border-radius: 15px;
+.logo, nav {
+   display: inline-block;
+   vertical-align: middle;
 }
 
-.card__info {
-    padding-top: 15px ;
+nav {
+   margin-left: 10vw;
 }
 
-.card__content h3 {
-    font-size: 18px;
+nav a {
+   color: #111111;
+   font-size: 16px;
+   line-height: 19px;
+   text-decoration: none;
+   margin: 0 15px;
 }
-
-.card__content p {
-    opacity: 0.5;
-    font-size: 14px;
-}
-
-
-/* --- INDEX PAGE --- */
-
 
 .banner {
-    background-color: #FBDFDB ;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-content: space-between;
-    width: 940px;
-    height: 366px;
-    border-radius: 30px;
-    margin: 0 auto 30px auto;
-}
-
-.content__banner {
-    margin-left: 115px;
-}
-
-.banner h1 {
-    width: 314px;
-    font-size: 32px;
-    font-weight: bold;
-}
-
-.banner p {
-    width: 316px;
-    font-size: 18px;
-    line-height: 28px;
+   max-width: 940px;
+   height: 366px;
+   min-width: 600px;
+   background-color: #FBDFBD;
+   border-radius: 30px;
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-bottom: 50px;
 }
 
 .banner img {
-    padding-top: 62px;
-    margin-left: 130px;
+   position: absolute;
+   right: 100px;
+   bottom: 0;
 }
 
-section {
-    width: 954px;
-    padding: 30px 0;
-    margin: 0 auto;
+.banner-text {
+   max-width: 31vw;
+   margin-left: 60px
 }
 
-section h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 13px;
+.banner-text .title {
+   font-size: 32px;
+   line-height: 38px;
+   font-weight: bold;
+   color: #111111;
+   margin-bottom: 10px;
 }
 
-/* --- DETAIL PAGE --- */
-
-.content {
-    width: 940px;
-    margin: 0 auto;
+.banner-text .text {
+   font-size: 18px;
+   line-height: 28px;
+   font-weight: normal;
+   color: #111111;
+   opacity: 0.7;
 }
 
-.banner__details img {
-    width: 940px;
-    height: 280px;
-    border-radius: 15px;
-    margin-bottom: 30px;
+.wrapper {
+   max-width: 940px;
 }
 
-.info__details {
-    text-align: center;
-
+.wrapper h1 {
+   font-size: 24px;
+   line-height: 28px;
+   font-weight: bold;
+   margin-bottom: 20px;
+   color: #111111;
 }
 
-.info__details h4 {
-    font-size: 36px;
+.cads {
+   max-width: 100%;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 20px;
 }
 
-.info__details p {
-    color: #777;
-    font-size: 20px;
+.card {
+   width: 100%;
 }
 
-.instrucions h4 {
-    font-size: 24px;
-    margin: 30px 0;
+.card img {
+   max-width: 100%;
+   border-radius: 15px;
+   margin-bottom: 20px;
 }
 
-.instrucions {
-    padding: 32px;
+.img-title {
+   font-size: 18px;
+   line-height: 21px;
+   color: #111111;
+   margin-bottom: 5px;
+   text-align: center;
 }
 
-.instrucions button {
-    font-size: 12px;
-    color: #999999;
-    background: none;
-    margin-left: 13px;
-    margin-top: 5px;
-    cursor: pointer;
+.img-chef {
+   font-size: 14px;
+   line-height: 16px;
+   color: #777777;
+   margin-bottom: 10px;
+   text-align: center;
 }
 
-.ingredients .title,
-.preparation .title,
-.information .title {
-    display: flex;
-    align-items: center;
+footer {
+   max-width: 100%;
+   height: 62px;
+   margin-top: 40px;
+   background-color: #EEEEEE;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
 }
 
-.instrucions ul {
-    margin-left: 20px;
+footer p {
+   font-size: 14px;
+   line-height: 16px;
+   color: #999999;
+   text-align: center;
 }
 
-.instrucions ul li {
-    font-size: 18px;
-    color: #444444;
-    line-height: 27px;
-}   
+/* ABOUT */
 
-.information p {
-    margin-bottom: 70px;
-    color: #444444;
-    font-size: 18px;
-    text-align: justify;
-    white-space: pre-line;
-    line-height: 27px;
+.about h1 {
+   font-size: 24px;
+   line-height: 28px;
+   font-weight: bold;
+   color: #111111;
+   margin-top: 20px;
 }
 
-/* --- ACTIVE/DESACTIVE */
-
-.hide {
-    display: block;
+.about h2 {
+   font-size: 20px;
+   line-height: 24px;
+   font-weight: bold;
+   color: #111111;
 }
 
-.hide.active {
-    display: none;
+.about p {
+   font-size: 18px;
+   line-height: 28px;
+   color: #444444;
+   padding: 20px 0;
+   text-align: justify;
 }
+
+/* RECIPES */
+
+.recipes {
+   padding: 20px 0;
+}
+
+.recipes-detail {
+   margin: 0;
+   font-weight: normal;
+}
+
+.recipes-detail img {
+   width: 940px;
+   height: 280px;
+   display: block;
+   margin: 0 auto;
+   border-radius: 15px;
+   margin-bottom: 50px;
+}
+
+.recipes-detail h1 {
+   font-size: 36px;
+   line-height: 42px;
+   font-weight: bold;
+   text-align: center;
+   color: #111111;
+   margin-left: 4px;
+   /* display: inline-flex;*/
+}
+
+.recipes-detail h3 {
+   font-size: 20px;
+   line-height: 24px;
+   color: #777777;
+   text-align: center;
+   font-weight: normal;
+   margin-bottom: 50px;
+}
+
+.recipes-detail h2 {
+   font-size: 24px;
+   line-height: 28px;
+   font-weight: bold;
+   color: #111111;
+   margin-bottom: 20px;
+   display: inline-block;
+}
+
+.recipes-detail ul {
+   margin-bottom: 40px;
+}
+
+.recipes-detail li {
+   font-size: 18px;
+   line-height: 28px;
+   color: #444444;
+   list-style-position: inside;
+}
+
+.recipes-detail p {
+   font-size: 18px.
+   line-height: 28px;
+   color: #444444;
+   margin-bottom: 50px;
+}
+
+.recipes-detail .hide {
+   margin: 0;
+   padding: 8px;
+   font-size: 12px;
+   font-weight: bold;
+   color: #999999;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.off {
+   display: table-column;
+}
+
+
