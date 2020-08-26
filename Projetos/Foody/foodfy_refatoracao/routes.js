@@ -1,24 +1,15 @@
 const express = require("express")
 const routes = express.Router()
-const guests = require("./controllers/guest")
-const admin = require("./controllers/admin")
+const main = require("./controllers/main")
+const recipes = require("./controllers/recipes")
 
 routes.get('/', (request, response) => {
    return response.redirect("/guest")
 })
 
-routes.get("/guest", guests.index)
-routes.get("/guest/about", guests.about)
-routes.get("/guest/recipes", guests.recipes)
-routes.get("/guest/details/:id", guests.details)
-
-routes.get("/admin/recipes", admin.index)
-routes.get("/admin/recipes/create", admin.create)
-routes.get("/admin/recipes/:id", admin.show)
-routes.get("/admin/recipes/:id/edit", admin.edit)
-
-routes.post("/admin/recipes", admin.post)
-routes.put("/admin/recipes", admin.put)
-
+routes.get('/', main.index)
+routes.get('/about', main.about)
+routes.get('/recipes', main.recipes)
+routes.get('/recipes/:index', main.recipesIndex)
 
 module.exports = routes
