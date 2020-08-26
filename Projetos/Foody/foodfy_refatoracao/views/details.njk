@@ -1,46 +1,56 @@
 {% extends 'layout.njk' %}
 
 {% block content %}
-   <main>
+    <div class='content'>
+        <div class="banner__details">
+            <img src="{{recipes.image}}" alt="{{items.title}}">
+        </div>
 
-      <div>
-	 <div class="recipes-detail">
-	    <img src='{{recipes.img}}' alt='{{recipes.title}}'>
-	    <h1>{{recipes.title}}</h1>
-	    <h3>{{recipes.author}}</h3>
+        <div class="info__details">
+            <h4>{{recipes.title}}</h4>
+            <p class="author">por {{recipes.author}}</p>
+        </div>
 
-	    <div class="recipes-detail-content">
-	       <h2>Ingredientes</h2>
+        <div class="instrucions">
 
-	       <a class="hide" href="">Esconder</a>
-	       <div class="info">
+            <div class="ingredients">
+                <div class="title">
+                    <h4>Ingredientes</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <div class="hide">
+                    {% for ingredient in recipes.ingredients %}
+                    <ul>
+                        <li>{{ingredient}}</li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
 
-	          <ul>
-		     {% for list in recipes.ingredients %}
-			<li>{{list}}</li>
-		     {% endfor %}
-	          </ul>
-	       </div>
+            <div class="preparation">
+                <div class="title">
+                    <h4>Modo de preparo</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <div class="hide">
+                    {% for item in recipes.preparation %}
+                    <ul>
+                        <li>{{item}}</li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
 
-	       <h2>Modo de Preparo</h2>
-	       <a class="hide" href="">Esconder</a>
-	       <div class="info">
-		  <p>{% for prepare in recipes.preparation}
-		     {{ prepare }}
-		     {% endfor %}</p>
-	       </div>
+            <div class="information">
+                <div class="title">
+                    <h4>Informações adicionais</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <p class="hide">{{recipes.information}}</p>
+            </div>
+        </div>
 
-	       <h2>Informações Adicionais</h2>
-	       <a class="hide" href="">Esconder</a>
-	       <div class="info">
-		  <p>{{recipes.information}}</p>
-	       </div>
-	      
-	    </div>
-	 </div>
-      </div>  <!-- cards -->
+    </div>
 
-   </main>
-
-   <script defer src='/script.js'></script>
+   <script src='/script.js'></script>
 {% endblock content%}

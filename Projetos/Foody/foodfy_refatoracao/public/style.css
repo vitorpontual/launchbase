@@ -95,11 +95,12 @@ nav a {
    font-size: 24px;
    line-height: 28px;
    font-weight: bold;
+   margin-left: 63px;
    margin-bottom: 20px;
    color: #111111;
 }
 
-.cads {
+.cards {
    max-width: 100%;
    display: grid;
    grid-template-columns: 1fr 1fr 1fr;
@@ -108,12 +109,16 @@ nav a {
 
 .card {
    width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center
 }
 
 .card img {
-   max-width: 100%;
+   width: 172px;
+   height: 80px;
    border-radius: 15px;
-   margin-bottom: 20px;
+   margin: 0 auto 20px auto;
 }
 
 .img-title {
@@ -175,83 +180,82 @@ footer p {
 }
 
 /* RECIPES */
-
-.recipes {
-   padding: 20px 0;
+content {
+    width: 940px;
+    margin: 0 auto;
 }
 
-.recipes-detail {
-   margin: 0;
-   font-weight: normal;
+.banner__details img {
+    width: 940px;
+    height: 280px;
+    border-radius: 15px;
+    margin-bottom: 30px;
 }
 
-.recipes-detail img {
-   width: 940px;
-   height: 280px;
-   display: block;
-   margin: 0 auto;
-   border-radius: 15px;
-   margin-bottom: 50px;
+.info__details {
+    text-align: center;
+
 }
 
-.recipes-detail h1 {
-   font-size: 36px;
-   line-height: 42px;
-   font-weight: bold;
-   text-align: center;
-   color: #111111;
-   margin-left: 4px;
-   /* display: inline-flex;*/
+.info__details h4 {
+    font-size: 36px;
 }
 
-.recipes-detail h3 {
-   font-size: 20px;
-   line-height: 24px;
-   color: #777777;
-   text-align: center;
-   font-weight: normal;
-   margin-bottom: 50px;
+.info__details p {
+    color: #777;
+    font-size: 20px;
 }
 
-.recipes-detail h2 {
-   font-size: 24px;
-   line-height: 28px;
-   font-weight: bold;
-   color: #111111;
-   margin-bottom: 20px;
-   display: inline-block;
+.instrucions h4 {
+    font-size: 24px;
+    margin: 30px 0;
 }
 
-.recipes-detail ul {
-   margin-bottom: 40px;
+.instrucions {
+    padding: 32px;
 }
 
-.recipes-detail li {
-   font-size: 18px;
-   line-height: 28px;
-   color: #444444;
-   list-style-position: inside;
+.instrucions button {
+    font-size: 12px;
+    color: #999999;
+    background: none;
+    margin-left: 13px;
+    margin-top: 5px;
+    cursor: pointer;
 }
 
-.recipes-detail p {
-   font-size: 18px.
-   line-height: 28px;
-   color: #444444;
-   margin-bottom: 50px;
+.ingredients .title,
+.preparation .title,
+.information .title {
+    display: flex;
+    align-items: center;
 }
 
-.recipes-detail .hide {
-   margin: 0;
-   padding: 8px;
-   font-size: 12px;
-   font-weight: bold;
-   color: #999999;
-   text-decoration: none;
-   cursor: pointer;
+.instrucions ul {
+    margin-left: 20px;
 }
 
-.off {
-   display: table-column;
+.instrucions ul li {
+    font-size: 18px;
+    color: #444444;
+    line-height: 27px;
+}   
+
+.information p {
+    margin-bottom: 70px;
+    color: #444444;
+    font-size: 18px;
+    text-align: justify;
+    white-space: pre-line;
+    line-height: 27px;
 }
 
+/* --- ACTIVE/DESACTIVE */
 
+.hide {
+    display: block;
+}
+
+.hide.active {
+    display: none;
+} 

@@ -1,27 +1,27 @@
-const hide = document.querySelectorAll(".hide")
-const info = document.querySelectorAll(".info")
-const card = document.querySelectorAll(".card")
 
-for (let i = 0; i < card.length; i++){
-   card[i].addEventListener("click", function(){
-      window.location.href = `/recipes/${i}`
-   })
+const buttons = document.querySelectorAll('button')
+const hidden = document.querySelectorAll('.hide')
+const cards = document.querySelectorAll('.card')
+
+for ( let card of cards) {
+    card.addEventListener("click", function(){
+        const recipe = card.getAttribute("id")
+        window.location.href = `http://localhost:5000/details/${recipe}`
+    })
 }
 
-for ( let hidden in hide ) {
-   hidden.addEventListener("click", function(){
-      if(hidden.textContent == "Esconder"){
-	 hidden.textContent = "Mostrar"
-	 info.classList.add("off")
-      }
-      else {
-	 hidden.textContent = "Escodner"
-	 info.classList.remove("off")
-      }
-   })
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', () => {
+
+        if (buttons[i].textContent == 'ESCONDER') {
+            buttons[i].innerHTML = 'MOSTRAR'
+            hidden[i].classList.add('active')
+        } else {
+            buttons[i].innerHTML = 'ESCONDER'
+            hidden[i].classList.remove('active')
+        }
+    })
 }
-
-
 /* for (let card of cards) {
     card.addEventListener("click", function(){
        
