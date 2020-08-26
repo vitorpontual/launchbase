@@ -1,0 +1,30 @@
+{% extends 'layout.njk' %}
+
+{% block style %}
+{% endblock style %}
+
+
+{% block content %}
+   <main>
+      <div class="banner">
+         <div class="banner-text">
+            <p class="title">As Melhores Receitas</p>
+            <p class="text">Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
+         </div>
+	 <img src="/chef.png" alt="Chef">
+      </div>
+
+      <div class="wrapper">
+         <h1>Receitas</h1>
+	 <div class="cards">
+	    {% for card in recipes %}
+	       <div class="card">
+		  <img src="{{card.image}}" alt="{{card.title}}">
+		  <p class="img-title">{{card.title}}</p>
+		  <p class="img-chef">{{card.author}}</p>
+	       </div>
+	    {% endfor %}
+	 </div>
+      </div>
+   </main>
+{% endblock content %}

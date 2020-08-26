@@ -67,10 +67,17 @@ exports.show = (request, response) => {
 exports.edit = (request, response) => {
    const recipeIndex = request.params.id
 
+   const recipes = {
+      ...data.recipes,
+      id: recipeIndex
+   }
    console.log(recipeIndex)
 
-   return response.render("admin/edit", [{ recipes: data.recipes[recipeIndex]}])
+   return response.render("admin/edit", {recipes})
 
+}
 
+// Update
 
+exports.put = (request, response) => {
 }
