@@ -1,4 +1,3 @@
-
 const buttons = document.querySelectorAll('button')
 const hidden = document.querySelectorAll('.hide')
 const cards = document.querySelectorAll('.card')
@@ -22,6 +21,16 @@ for (let i = 0; i < buttons.length; i++) {
         }
     })
 }
+
+const currentPage = location.pathname
+const menuItems = document.querySelectorAll('header nav a')
+
+for (let item of menuItems){
+   if (currentPage.includes(item.getAttribute('href'))){
+      item.classList.add('active')
+   }
+}
+
 /* for (let card of cards) {
     card.addEventListener("click", function(){
        

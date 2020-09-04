@@ -40,6 +40,7 @@ nav {
 }
 
 nav a {
+   position: relative;
    color: #111111;
    font-size: 16px;
    line-height: 19px;
@@ -47,6 +48,30 @@ nav a {
    margin: 0 15px;
 }
 
+nav a:hover{
+   color: #6558C3;
+   font-weight: bold;
+}
+
+nav a.active {
+   font-weight: bold;
+   color: #777777;
+}
+
+nav a::after {
+   content: '';
+   width: 0;
+   height: 2px;
+   background-color: #6558C3;
+   position: absolute;
+   left: 0;
+   bottom: -4px;
+}
+
+nav a:hover::after{
+   width: 100%;
+   transition: width 200ms ease-out;
+}
 .banner {
    max-width: 940px;
    height: 366px;
