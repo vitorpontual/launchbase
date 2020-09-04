@@ -5,7 +5,7 @@
    <main>
       <div class="cards">
 	 {% for card  in recipes %}
-	    <div class="card">
+	    <div class="card" id="{{card.id}}">
 	       <img src="{{card.image}}" alt="{{card.title}}">
 	       <p class="img-title">{{card.title}}</p>
 	       <p class="img-chef">{{card.author}}</p>

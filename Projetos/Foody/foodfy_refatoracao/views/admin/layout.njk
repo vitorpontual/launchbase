@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name='viewpoert' content='width=device-width, initital-scale=1.0'>
+
+   {% block title%}
+      <title>Admin - Foodfy</title>
+   {% endblock title%}
+
+   {% block style %}
+   {% endblock style%}
+
+   <link rel="stylesheet" href="/style.css">
+   <link rel="stylesheet" href="/admin.css">
+
+</head>
+<body>
+
+   <div class="content-admin">
+      <header>
+	 <a class="logo-admin" href="/admin/recipes"><img class="logo" src="/logo2.png" alt="Foodfy Admin"></a>
+      </header>
+
+     {% block content %}{% endblock content %}
+   </div>
+   
+</body>
+</html>
