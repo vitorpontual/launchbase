@@ -9,5 +9,6 @@ routes.get('/recipes', main.recipes)
 routes.get('/recipes/:index', main.recipesIndex)
 
 routes.get('/admin/recipes', recipes.index)
+routes.get('/admin/recipes/create', recipes.create)
 
 module.exports = routes
