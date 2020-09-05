@@ -1,0 +1,60 @@
+{% extends '../layout.njk'%}
+
+{% block content %}
+   <div class="header show">
+      <h1>Gerenciar Receitas</h1>
+      <button type='submit' onclick="window.location.href='/admin/recipes/{{recipes.id}}/edit'">Editar receitas</button>
+   </div>
+    <div class='content'>
+        <div class="banner__details">
+            <img src="{{recipes.image}}" alt="{{items.title}}">
+        </div>
+
+        <div class="info__details">
+            <h4>{{recipes.title}}</h4>
+            <p class="author">por {{recipes.author}}</p>
+        </div>
+
+        <div class="instrucions">
+
+            <div class="ingredients">
+                <div class="title">
+                    <h4>Ingredientes</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <div class="hide">
+                    {% for ingredient in recipes.ingredients %}
+                    <ul>
+                        <li>{{ingredient}}</li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="preparation">
+                <div class="title">
+                    <h4>Modo de preparo</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <div class="hide">
+                    {% for item in recipes.preparation %}
+                    <ul>
+                        <li>{{item}}</li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="information">
+                <div class="title">
+                    <h4>Informações adicionais</h4>
+                    <button>ESCONDER</button>
+                </div>
+                <p class="hide">{{recipes.information}}</p>
+            </div>
+        </div>
+
+    </div>
+
+   <script src='/script.js'></script>
+{% endblock content%}

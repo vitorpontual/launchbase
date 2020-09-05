@@ -9,6 +9,26 @@ exports.index = function(request, response) {
    }
 }
 
+exports.show = function(request, response) {
+   for (recipe of data.recipes){
+      recipe.id = data.recipes.indexOf(recipe)
+   }
+
+   const { id } =  request.params
+
+   const foundRecipe = data.recipes.find(function(recipes){
+      return id == recipes.id
+   })
+
+   if (!foundRecipe) return response.send('Recipe not Found!!!')
+
+   const recipes = {
+      ...foundRecipe
+   }
+
+   return response.render('admin/recipes/show', {recipes})
+}
+
 exports.create = function(request, response) {
    return response.render('admin/recipes/create')
 }
