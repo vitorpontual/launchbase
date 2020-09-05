@@ -63,7 +63,7 @@ form section,
    margin-left: 16px;
 }
 
-.header button[type='submit'],
+.header button[type='submit']:nth-child(2),
 .recipes form button[type='submit'] {
    padding: 9px 20px;
    background-color: var(--primary-color);
@@ -167,4 +167,17 @@ form section,
    background-color: #fff;
    outline: none;
    margin-bottom: 32px;
+}
+
+.delete-button {
+   background-color: red;
+   padding: 9px 20px;
+   color: #fff;
+   font-size: 16px;
+   font-weight: bold;
+   line-height: 19px;
+   text-decoration: none;
+   border-radius: 4px;
+   outline: none;
+   margin-left: 10px;
 }

@@ -37,12 +37,24 @@ exports.post = function(request, response) {
    const keys = Object.keys(request.body)
 
    for (key of keys){
-      if (request.body[key] = '') {
+      if (request.body[key] == '') {
 	 return response.send('Please, fill all Fields!')
       }
    }
 
-   return response.send(request.body)
+   const id = Number(request.body.length + 1)
+
+   data.recipes.push({
+      id,
+      ...request.body
+   })
+
+   fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
+      if(err) return response.send('Write file Error!')
+
+      return response.redirect('/admin/recipes')
+   })
+
 
 }
 
