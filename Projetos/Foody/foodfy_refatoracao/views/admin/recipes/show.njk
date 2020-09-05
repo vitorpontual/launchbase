@@ -20,7 +20,7 @@
             <div class="ingredients">
                 <div class="title">
                     <h4>Ingredientes</h4>
-                    <button>ESCONDER</button>
+                    <button class='botao'>ESCONDER</button>
                 </div>
                 <div class="hide">
                     {% for ingredient in recipes.ingredients %}
@@ -34,7 +34,7 @@
             <div class="preparation">
                 <div class="title">
                     <h4>Modo de preparo</h4>
-                    <button>ESCONDER</button>
+                    <button class='botao'>ESCONDER</button>
                 </div>
                 <div class="hide">
                     {% for item in recipes.preparation %}
@@ -48,7 +48,7 @@
             <div class="information">
                 <div class="title">
                     <h4>Informações adicionais</h4>
-                    <button>ESCONDER</button>
+                    <button class='botao'>ESCONDER</button>
                 </div>
                 <p class="hide">{{recipes.information}}</p>
             </div>

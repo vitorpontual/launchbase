@@ -31,6 +31,7 @@
    margin-bottom: 30px;
 }
 
+form section,
 .show,
 .content-admin main .recipes .header {
    display: flex;
@@ -158,7 +159,7 @@
    resize: none;
 }
 
-.add-button {
+.add-button{
    font-size: 16px;
    font-weight: bold;
    line-height: 19px;

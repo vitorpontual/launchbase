@@ -36,16 +36,76 @@ exports.create = function(request, response) {
 exports.post = function(request, response) {
    const keys = Object.keys(request.body)
 
-   if (request.body[key] = '') {
-      return response.send('Please, fill all Fields!')
+   for (key of keys){
+      if (request.body[key] = '') {
+	 return response.send('Please, fill all Fields!')
+      }
    }
 
-   data.recipes.push({
-      ...request.body
+   return response.send(request.body)
+
+}
+
+exports.edit = function(request, response){
+   for (recipe of data.recipes){
+      recipe.id = data.recipes.indexOf(recipe)
+   }
+
+   const { id } = request.params
+
+   const foundRecipe = data.recipes.find(function(recipes){
+      return id == recipes.id
    })
 
-   fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err) {
-      if(err) return response.send('Write File Error');
-      return response.redirect('admin/recipes')
+   if (!foundRecipe) return response.send('Recipe not Found!')
+
+   const recipes = {
+      ...foundRecipe
+   }
+
+   return response.render('admin/recipes/edit', {recipes})
+}
+
+exports.put = function(request, response) {
+   const { id } = request.body
+
+   let index = 0
+
+   const foundRecipe = data.recipes.find(function(recipes, foundIndex){
+      if(id == recipes.id){
+	 index = foundIndex
+	 return true
+      }
+   })
+
+   if (!foundRecipe) return response.send('Recipe not Found!!!')
+
+   const recipe = {
+      ...foundRecipe,
+      ...request.body,
+      id: Number(request.body.id)
+   }
+
+   data.recipes[index] = recipe
+
+   fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
+      if(err) return response.send("Write file Error")
+
+      return response.redirect(`/admin/recipes/${id}`)
+   })
+}
+
+exports.delete = function(request, response){
+   const { id } = request.body
+
+   const filteredRecipes = data.recipes.filter(function(recipe){
+      return recipe.id != id
+   })
+
+   data.recipes= filteredRecipes
+
+   fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
+      if(err) return response.send('Write file error')
+      return response.redirect('/admin/recipes')
    })
 }

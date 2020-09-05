@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('.botao')
 const hidden = document.querySelectorAll('.hide')
 const cards = document.querySelectorAll('.card')
 
@@ -30,6 +30,43 @@ for (let item of menuItems){
       item.classList.add('active')
    }
 }
+
+
+// add Ingredient
+
+function addIngredient(){
+   const ingredients = document.querySelector(".ingredients")
+   const fieldContainer = document.querySelectorAll('.ingredient')
+
+   const newField = fieldContainer[fieldContainer.length -1].cloneNode(true)
+
+   if(newField.children[0].value == '') return false
+
+   newField.children[0].value = ''
+   ingredients.appendChild(newField)
+}
+
+document
+   .querySelector('.add-ingredient')
+   .addEventListener('click', addIngredient)
+
+// add prepare
+
+function addPreparation(){
+   const preparations = document.querySelector('.preparations')
+   const fieldContainer = document.querySelectorAll('.preparation')
+
+   const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true)
+
+   if (newField.children[0].value== '') return false
+
+   newField.children[0].value = ''
+   preparations.appendChild(newField)
+}
+
+document
+   .querySelector('.add-prepare')
+   .addEventListener('click', addPreparation)
 
 /* for (let card of cards) {
     card.addEventListener("click", function(){
