@@ -34,6 +34,7 @@ exports.create = function(request, response) {
 }
 
 exports.post = function(request, response) {
+
    const keys = Object.keys(request.body)
 
    for (key of keys){
@@ -42,8 +43,12 @@ exports.post = function(request, response) {
       }
    }
 
-   const id = Number(request.body.length + 1)
-
+   let id = 1 
+   const lastRecipe = data.recipes[data.recipes.length - 1]
+console.log(lastRecipe)
+   if (lastRecipe) {
+      id = lastRecipe.id + 1
+   }
    data.recipes.push({
       id,
       ...request.body
