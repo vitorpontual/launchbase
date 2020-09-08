@@ -155,29 +155,6 @@
         "Despeje em assadeira retangular média, untada e leve ao forno médio (180°C), por aproximadamente 45 minutos. Depois de frio, polvilhe, com o",
         "açúcar de confeiteiro e corte em quadrados."
       ]
-    },
-    {
-      "id": 6,
-      "image": "https://images.unsplash.com/photo-1564767655658-4e6b365884ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      "title": "Taco Gringa Porco",
-      "author": "John Leguzano",
-      "ingredients": [
-        "Massa de Trigo",
-        "Porco em tiras",
-        "Verduras"
-      ],
-      "preparation": [
-        "Assar a carne junto com os legumes",
-        "Esquentar a Massa de Milho",
-        "Montar"
-      ],
-      "information": "Diretamente do Mexico",
-      "ingredient": [
-        "Massa de Trigo",
-        "Porco em tiras",
-        "Verduras",
-        ""
-      ]
     }
   ]
 }
