@@ -16,15 +16,15 @@ module.exports = {
       }
 
       const query = `
-      INSERT INTO instructors(
+      INSERT INTO teachers(
 	 avatar_url,
 	 name,
-	 birth_date
+	 birth_date,
 	 education_level,
 	 class_type,
 	 subjects_taught,
 	 created_at
-      ) VALUE($1, $2, $3, $4, $5, $6, $7)
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING id
       `
       const values = [
@@ -38,9 +38,9 @@ module.exports = {
       ]
 
       db.query(query, values, (err, results) => {
-	 if(err) return response.send('Database error!')
-
-	 return response.redirect(`/teachers/${results.row[0].id}`)
+	 console.log(err)
+	 console.log(results)
+	 return
       })
    },
    show(request, response){
