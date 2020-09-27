@@ -20,24 +20,24 @@
 
             <div class="item">
                 <div>Grau de escolaridade</div>
-                <div>{{teacher.grau}}</div>
+                <div>{{teacher.education_level}}</div>
             </div>
 
             <div class="item">
                 <div>Tipo de Aula</div>
-                <div>{{"Presencial" if teacher.aula == "P" else "à distância"}}</div>
+                <div>{{"Presencial" if teacher.class_type == "P" else "à distância"}}</div>
             </div>
 
             <div class="item">
                 <div>Acompanhamento</div>
-                {% for service in teacher.services %}
+                {% for service in teacher.subjects_taught %}
                     <span>{{service}}</span>
                 {% endfor %}
             </div>
 
             <div class="item">
                 <div>Desde</div>
-                <div>27/07/2020</div>
+		<div>{{teacher.created_at}}</div>
             </div>
 
             <a href="/teachers/{{teacher.id}}/edit" class="button">Editar</a>

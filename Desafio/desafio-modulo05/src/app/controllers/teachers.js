@@ -17,13 +17,23 @@ module.exports = {
       for (key of keys){
 	 if(request.body[key] == '') return response.send('Please, fill all fields')
       }
-      Teacher.create(req.body, function(teacher){
-	 return request.redirect(`/teachers/%{teacher.id}`)
+      Teacher.create(request.body, function(teacher){
+	 console.log(teacher.id)
+	 return response.redirect(`/teachers/${teacher.id}`)
       })
    },
    show(request, response){
+      Teacher.find(request.params.id, function(teacher){
+	 if(!teacher) return response.send("Teacher not Found!")
 
-      return
+	 teacher.age = age(teacher.birth_date)
+	 teacher.subjects_taught = teacher.subjects_taught.split(", ")
+	 teacher.created_at = date(teacher.created_at).format
+
+	 console.log(teacher.created_at)
+	 console.log(teacher.age)
+	 return response.render('teachers/show', {teacher})
+      })
    },
    edit(request, response){
 
