@@ -37,19 +37,29 @@ module.exports = {
    },
    edit(request, response){
 
-      return
+      Teacher.find(request.params.id, function(teacher){
+	 if(!teacher) return response.send('Teacher not found')
+
+	 teacher.birth_date = date(teacher.birth_date).iso
+
+	 return response.render('teachers/edit', {teacher})
+      })
    },
    put(request, response){
 
-      const keys = Objects.keys(request.body)
+      const keys = Object.keys(request.body)
 
       for(key of keys){
-	 if(!request.body[key] == '') return response.send('Please, fill all fields')
+	 if(request.body[key] == '') return response.send('Please, fill all fields')
       }
-      return
+      Teacher.update(request.body, function(){
+	 return response.redirect(`/teachers/${request.body.id}`)
+      })
    },
    delete(request, response){
+      Teacher.delete(request.body.id, function(){
+	 return response.redirect(`/teachers/`)
+      })
     
-      return
    }
 }
