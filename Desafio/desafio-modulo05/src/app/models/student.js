@@ -60,6 +60,42 @@ module.exports = {
 
 	 callback(results.rows[0])
       })
+   },
+   update(data, callback){
+      query = `
+      UPDATE students SET
+      avatar_url=($1),
+      name=($2),
+      email=($3),
+      birth_date=($4),
+      grade=($5),
+      weekly=($6),
+      teacher_id=($7)
+      WHERE id = $8
+      `
+      values = [
+	 data.avatar_url,
+	 data.name,
+	 data.email,
+	 date(data.birth_date).iso,
+	 data.grade,
+	 data.weekly,
+	 data.teacher,
+	 data.id
+      ]
+
+      db.query(query, values, function(err, results){
+	 if(err) throw `Database Error! ${err}`
+
+	 callback()
+      })
+   },
+   delete(id, callback){
+      db.query(`DELETE FROM students WHERE id = $1`, [id], function(err, results){
+	 if(err) throw `Database Error! ${err}`
+
+	 callback()
+      })
    }
 }
 
