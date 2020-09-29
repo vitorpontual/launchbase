@@ -35,8 +35,8 @@
     <div>
         <input 
             type="date" 
-            name="birth" 
-            value="{{student.birth}}">
+            name="birth_date" 
+            value="{{student.birth_date}}">
     </div>
 </div>
 
@@ -45,7 +45,7 @@
 <div class="item">
    <div>Ano Escolar</div>
    <div>
-      <select name="schoolyear">
+      <select name="grade">
 	 <option value="5EF" {% if student.schoolyear == "5EF"%} selected {% endif %}>5º ano do ensino fundamental</option>
 	 <option value="6EF" {% if student.schoolyear == "6EF"%} selected {% endif %}>6º ano do ensino fundamental</option>
 	 <option value="7EF" {% if student.schoolyear == "7EF"%} selected {% endif %}>7º ano do ensino fundamental</option>
@@ -68,4 +68,14 @@
    </div>
 </div>
 
+<div class="item">
+   <div>Professor</div>
+   <div>
+      <select name="teacher">
+	 {% for teacher in option %}
+	 <option value="{{teacher.id}}" {% if students.teacher_id == teacher.id%} selected {% endif%}>{{teacher.name}}</option>
+	 {% endfor %}
+      </select>
+   </div>
+</div>
 <button type="submit">Salvar</button>

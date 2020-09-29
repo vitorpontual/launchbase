@@ -55,8 +55,8 @@ module.exports = {
       SELECT teachers.*, count(students) AS total_students
       FROM teachers
       LEFT JOIN students ON (teachers.id = students.teacher_id)
-      WHERE teachers.name ILIKE "%${filter}%"
-      OR teachers.subjects_taught ILIKE "%${filter}%"
+      WHERE teachers.name ILIKE '%${filter}%'
+      OR teachers.subjects_taught ILIKE '%${filter}%'
       GROUP BY teachers.id
       ORDER BY total_students DESC`, function(err, results){
 	 if(err) throw `Database Error! ${err}`
