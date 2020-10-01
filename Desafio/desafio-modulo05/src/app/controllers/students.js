@@ -31,7 +31,7 @@ module.exports = {
 	 if(request.body[key] == '') return response.send('Please, fill all fields')
       }
       Student.create(request.body, function(student){
-	 return response.redirect(i`/students/${student.id}`, {student})
+	 return response.redirect(`/students/${student.id}`, {student})
       })
    },
    show(request, response){
@@ -70,7 +70,7 @@ module.exports = {
    },
    delete(request, response){
       Student.delete(request.body.id,  function(){
-	 return response.redirect('students/')
+	 return response.redirect('/students/')
       })
    },
 }
