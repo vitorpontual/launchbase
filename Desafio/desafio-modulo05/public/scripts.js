@@ -54,8 +54,9 @@ function createPagination(pagination){
    }
    pagination.innerHTML = elements
 }
+const ok = paginate(10, 45)
 
-console.log(pagination)
+console.log(ok)
 if(pagination){
    createPagination(pagination)
 }
