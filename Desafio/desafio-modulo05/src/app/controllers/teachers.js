@@ -23,7 +23,6 @@ module.exports = {
 	    return response.render('teachers/index', {teachers, filter, pagination})
 	 }
       }
-	       console.log(params)
 
       Teacher.paginate(params)
 

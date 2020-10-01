@@ -3,21 +3,36 @@ const Student = require('../models/student')
 
 module.exports = {
    index(request, response){
-      Student.all(function(students){
+      let {filter, page, limit} = request.query
 
-	 schoolyear = []
+      page = page || 1
+      limit = limit || 2
+      let offset = limit * (page - 1)
 
-	 for ( item of students ){
-
-	    const student = {
-	       ...item,
-	       grade: grade(item.grade)
+      const params = {
+	 filter,
+	 page,
+	 limit,
+	 offset,
+	 callback(students){
+	    schoolyear = []
+	    for ( item of students ){
+	       const student = {
+		  ...item,
+		  grade: grade(item.grade)
+	       }
+	       schoolyear.push(student)
 	    }
-	    schoolyear.push(student)
+	       console.log(schoolyear)
+	    pagination = {
+	       total: Math.ceil(students[0].total / limit),
+	       page
+	    } 
+	    return response.render('students/index', {students :schoolyear, filter, pagination})
 	 }
+      }
 
-	 return response.render('students/index', {students : schoolyear})
-      })
+      Student.paginate(params)
    },
    create(request, response){
       Student.teacherSelectOption(function(option){
