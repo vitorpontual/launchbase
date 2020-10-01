@@ -237,7 +237,7 @@ th {
    color: var(--secundary-color);
    font-size: 14px;
 }
-tbody td:last-child td{
+tbody tr:last-child td {
    border-bottom: none;
 }
 
@@ -313,6 +313,7 @@ tbody tr .total_students {
    grid-template-columns: 1fr 1fr;
    align-items: center;
    margin-bottom: 32px;
+   padding-bottom: 32px;
 }
 
 .table-container .header a {
@@ -338,7 +339,35 @@ tbody tr .total_students {
    width: 220px;
 }
 
+/* Pagination */
 
+.table-container {
+   display: grid;
+   grid-template: 64px 1fr 16px / 1fr;
+}
 
+.table-container .header {
+   margin: 0;
+   align-self: start;
+}
+
+.table-container .pagination {
+   margin: 0;
+   align-self: end;
+   justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+   color: var(--primary-color);
+   text-decoration: none;
+   margin-right: 16px;
+}
+
+.pagination a:hover{
+   filter: brightness(0.7);
+   font-weight: 700;
+   border-bottom: 1px solid var(--primary-color)
+}
 
 
