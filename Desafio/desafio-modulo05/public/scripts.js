@@ -54,7 +54,8 @@ function createPagination(pagination){
    }
    pagination.innerHTML = elements
 }
-console.log(elements)
+
+console.log(pagination)
 if(pagination){
    createPagination(pagination)
 }

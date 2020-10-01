@@ -8,11 +8,12 @@ module.exports = {
 
       page = page || 1
       limit = limit || 2
-      let offset = limit * (page - 1)
+      let offset = limit * (page - 1)  
 
       const params = {
 	 filter,
 	 page,
+	 limit,
 	 offset,
 	 callback(teachers){
 	    pagination = {
@@ -22,6 +23,7 @@ module.exports = {
 	    return response.render('teachers/index', {teachers, filter, pagination})
 	 }
       }
+	       console.log(params)
 
       Teacher.paginate(params)
 
