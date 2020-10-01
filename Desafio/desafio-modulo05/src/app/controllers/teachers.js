@@ -14,9 +14,9 @@ module.exports = {
 	 filter,
 	 page,
 	 offset,
-	 callback(teacher){
+	 callback(teachers){
 	    pagination = {
-	       total: Math.ceil(teacher[0].total / limit),
+	       total: Math.ceil(teachers[0].total / limit),
 	       page
 	    }
 	    return response.render('teachers/index', {teachers, filter, pagination})
