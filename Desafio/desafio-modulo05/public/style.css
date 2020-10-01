@@ -257,6 +257,11 @@ tbody tr td:first-child span {
    border: 2px solid black;
 }
 
+.table-container .header a,
+.table-container form button {
+   background-color: var(--red-color)
+}
+
 .table-container > a,
 tbody tr td:last-child a {
    background-color: var(--red-color);
@@ -284,8 +289,22 @@ tbody td .table-services {
    font-weight: bold;
    margin-right: 4px;
    margin-top: 8px;
+}
+
+td {
+   position: relative
 
 }
+tbody tr .total_students {
+   background-color: var(--last-color);
+   padding: 8px;
+   border-radius: 10px;
+   position: absolute;
+   left: 36%;
+   top: 30%;
+   font-weight: 700;
+   font-size: 14px;
+  }
 
 /* Filter */
 

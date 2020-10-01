@@ -5,6 +5,7 @@ module.exports = {
    all(callback){
       db.query(`
       SELECT students.* FROM students
+      ORDER BY name ASC
       `, function(err, results){
 	 if(err) throw `Database Error! ${err}`
 
