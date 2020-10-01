@@ -12,9 +12,9 @@ function paginate(selectedPage, totalPage) {
       oldPage
 
    for (let currentPage = 1; currentPage <= totalPage; currentPage++ ){
-      const firstAndLastPage = currentPage == 1 || currentPage == totalPage
-      const pagesAfterSelectedPage = currentPage <= selectedPage + 2
-      const pagesBeforeSelectedPage = currentPage >= selectedPage - 2
+      const firstAndLastPage = currentPage == 1 || currentPage == 2 || currentPage == totalPage || currentPage == totalPage -1
+      const pagesAfterSelectedPage = currentPage <= selectedPage + 1
+      const pagesBeforeSelectedPage = currentPage >= selectedPage - 1
 
       if(firstAndLastPage || pagesBeforeSelectedPage && pagesAfterSelectedPage) {
 	 if( oldPage && currentPage - oldPage > 2 ){
@@ -54,7 +54,7 @@ function createPagination(pagination){
    }
    pagination.innerHTML = elements
 }
-const ok = paginate(10, 45)
+const ok = paginate(5, 10)
 
 console.log(ok)
 if(pagination){
