@@ -28,6 +28,7 @@ module.exports = {
 	       total: Math.ceil(students[0].total / limit),
 	       page
 	    } 
+	    console.log(pagination)
 	    return response.render('students/index', {students :schoolyear, filter, pagination})
 	 }
       }
@@ -46,7 +47,8 @@ module.exports = {
 	 if(request.body[key] == '') return response.send('Please, fill all fields')
       }
       Student.create(request.body, function(student){
-	 return response.redirect(`/students/${student.id}`, {student})
+	 console.log(student)
+	 return response.redirect(`/students/${student.id}`)
       })
    },
    show(request, response){
