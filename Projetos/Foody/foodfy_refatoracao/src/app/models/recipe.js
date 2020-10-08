@@ -99,7 +99,6 @@ module.exports = {
       ]
 
 
-      console.log(values)
       db.query(query, values, function(err, results){
 	 if(err) throw `Database Error! ${err}`
 

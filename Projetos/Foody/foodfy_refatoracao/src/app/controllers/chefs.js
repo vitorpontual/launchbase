@@ -29,8 +29,13 @@ exports.show = function(request, response){
 }
 exports.edit = function(request, response){
    Chef.find(request.params.id, function(chefs){
-      console.log(chefs)
       if(!chefs) return response.send('Chef not Found')
+
+      const { total_recipes } = request.body
+
+      console.log(total_recipes)
+      if(total_recipes > 0) return response.send("You can't delete, because have 1 or more recipes!")
+
       return response.render('admin/chefs/edit', {chefs})
    })
 }
@@ -41,13 +46,13 @@ exports.put = function(request, response){
       if(request.body[key] == '') return response.send('Please, fill all fields')
    }
 
-   console.log(request.body)
    Chef.update(request.body, function(){
       return response.redirect(`/admin/chefs/${request.body.id}`)
    })
 }
 exports.delete = function(request, response){
    Chef.delete(request.body.id, function(){
+
       return response.redirect('/admin/chefs')
    })
 }

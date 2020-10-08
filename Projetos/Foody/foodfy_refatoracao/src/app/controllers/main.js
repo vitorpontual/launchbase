@@ -36,6 +36,7 @@ exports.recipes = function (request, response) {
 }
 exports.recipesIndex = function (request, response) {
    Recipe.find(request.params.id, function(recipes){
+      console.log(recipes)
       response.render("details", {recipes})
    })
 }
