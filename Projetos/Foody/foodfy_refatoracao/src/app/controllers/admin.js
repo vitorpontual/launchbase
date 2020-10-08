@@ -1,36 +1,27 @@
-const fs = require('fs')
-const data = require('../data.json')
+const Recipe = require('../models/recipe')
+const { date } = require('../../lib/utils')
 
 exports.index = function(request, response) {
-   for (recipe of data.recipes){
-      recipe.id = data.recipes.indexOf(recipe);
+   Recipe.all(function(recipes){
+      return response.render('admin/recipes/index', {recipes})
 
-      return response.render("admin/recipes/index", {recipes : data.recipes})
-   }
-}
-
-exports.show = function(request, response) {
-   for (recipe of data.recipes){
-      recipe.id = data.recipes.indexOf(recipe)
-   }
-
-   const { id } =  request.params
-
-   const foundRecipe = data.recipes.find(function(recipes){
-      return id == recipes.id
    })
+}
+exports.show = function(request, response) {
+   Recipe.find(request.params.id, function(recipes){
+      if(!recipes) return response.send("Recipe not found!")
+      recipes.created_at = date(recipes.created_at).format
 
-   if (!foundRecipe) return response.send('Recipe not Found!!!')
-
-   const recipes = {
-      ...foundRecipe
-   }
-
-   return response.render('admin/recipes/show', {recipes})
+      return response.render('admin/recipes/show', {recipes})
+   })
+   
 }
 
 exports.create = function(request, response) {
-   return response.render('admin/recipes/create')
+   Recipe.chefSelectOption(function(chefsOption){
+      return response.render('admin/recipes/create', {chefsOption})
+   
+   })
 }
 
 exports.post = function(request, response) {
@@ -43,86 +34,26 @@ exports.post = function(request, response) {
       }
    }
 
-   let id = 1 
-   const lastRecipe = data.recipes[data.recipes.length - 1]
-console.log(lastRecipe)
-   if (lastRecipe) {
-      id = lastRecipe.id + 1
-   }
-   data.recipes.push({
-      id,
-      ...request.body
+   Recipe.create(request.body, function(recipes){
+      return responseredirect(`/admin/recipes/${recipes.id}`)
    })
-
-   fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
-      if(err) return response.send('Write file Error!')
-
-      return response.redirect('/admin/recipes')
-   })
-
-
+   
 }
 
 exports.edit = function(request, response){
-   for (recipe of data.recipes){
-      recipe.id = data.recipes.indexOf(recipe)
-   }
+   Recipe.find(request.params.id, function(recipes){
+      if(!recipes) return response.send("Recipe not found!")
+      recipes.created_at = date(recipes.created_at).format
 
-   const { id } = request.params
-
-   const foundRecipe = data.recipes.find(function(recipes){
-      return id == recipes.id
+      return response.render('admin/recipes/edit', {recipes})
    })
-
-   if (!foundRecipe) return response.send('Recipe not Found!')
-
-   const recipes = {
-      ...foundRecipe
-   }
-
-   return response.render('admin/recipes/edit', {recipes})
+   return
 }
 
 exports.put = function(request, response) {
-   const { id } = request.body
-
-   let index = 0
-
-   const foundRecipe = data.recipes.find(function(recipes, foundIndex){
-      if(id == recipes.id){
-	 index = foundIndex
-	 return true
-      }
-   })
-
-   if (!foundRecipe) return response.send('Recipe not Found!!!')
-
-   const recipe = {
-      ...foundRecipe,
-      ...request.body,
-      id: Number(request.body.id)
-   }
-
-   data.recipes[index] = recipe
-
-   fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
-      if(err) return response.send("Write file Error")
-
-      return response.redirect(`/admin/recipes/${id}`)
-   })
+   return
 }
 
 exports.delete = function(request, response){
-   const { id } = request.body
-
-   const filteredRecipes = data.recipes.filter(function(recipe){
-      return recipe.id != id
-   })
-
-   data.recipes= filteredRecipes
-
-   fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
-      if(err) return response.send('Write file error')
-      return response.redirect('/admin/recipes')
-   })
+   return
 }

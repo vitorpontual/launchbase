@@ -4,14 +4,14 @@
 
 <main>
    <div class="chefs">
-      <div class="header">
          <form action="/admin/chefs" method='POST'>
             <section>
                <h1>Criar Chef</h1>
-               <button type='submit'>Salvar Chef</button>
+               <button class='add-chef-button' type='submit'>Salvar Chef</button>
             </section>
+
+	    {% include './fields.njk'%}
          </form>
-      </div>
    </div>
 </main>
 

@@ -1,0 +1,23 @@
+{% extends './layout.njk' %}
+
+{% block content %}
+   <div class="chefs">
+      <h1>Editar Chef</h1>
+      <div class="buttons">
+         <button form='form-delete' class='delete-button' type='submit'>Deletar</button>
+         <button form='form-put' type='submit'>Salvar Chef</button>
+      </div>
+
+      <form id="form-delete" action="/admin/chefs?_method=DELETE" method='POST'>
+	 <input type="hidden" name='id' value='{{chefs.id}}'>
+      </form>
+
+      <form id="form-put" action="">
+	 <div class="chefs-fields">
+	    {% include "./fields.njk" %}
+
+	    <input type="hidden" id='id' value='{{chefs.id}}'>
+	 </div>
+      </form>
+   </div>
+{% endblock content %}

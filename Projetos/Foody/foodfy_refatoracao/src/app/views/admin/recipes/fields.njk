@@ -13,10 +13,14 @@
 </div>
 
 <div class="item">
-   <div>Chef
-      <select name="chef">
+   <div>Chef</div>
+   <div>
+      <select  name="chef_id">
 	 {% for chef in chefsOption %}
-	    <option value="{{chef.id}}" {% if recipes.chef_id == chef.id} selected {% endif %}>{{chef.name}}</option>
+	    <option value="{{chef.id}}" {% if recipes.chef_id == chef.id %} selected {% endif %}>
+	       {{chef.name}}
+	    </option>
+	 {% endfor %}
       </select>
    </div>
 </div>

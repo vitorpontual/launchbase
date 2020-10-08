@@ -13,12 +13,12 @@
 
       <div class="cards-chefs">
 	 {% for card in chefs %}
-	    <div>
+	    <div class='card-chef'>
 	       <img src="{{card.avatar_url}}" alt="{{card.name}}">
-	    </div>
-	    <div>
-	       <h1>{{card.name}}</h1>
-	       <a class="link" href="/admin/chefs/{{card.id}}">Visualizar</a>
+	       <div>
+		  <h1>{{card.name}}</h1>
+		  <a class="link" href="/admin/chefs/{{card.id}}">Visualizar</a>
+	       </div>
 	    </div>
 	 {% endfor %}
       </div>

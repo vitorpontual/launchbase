@@ -1,3 +1,4 @@
 # Untrack Folders
 node_modules/
 *.swp
+*.swo

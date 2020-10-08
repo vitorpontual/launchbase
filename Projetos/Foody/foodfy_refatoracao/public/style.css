@@ -22,7 +22,11 @@
    border: 0;
 }
 
+body {
+   position: relative
+}
 header {
+   position: relative;
    padding: 30px 0;
 }
 
@@ -30,13 +34,8 @@ header, main{
    max-width: 940px;
 }
 
-.logo, nav {
-   display: inline-block;
-   vertical-align: middle;
-}
-
-nav {
-   margin-left: 10vw;
+nav{
+   justify-self: center;
 }
 
 nav a {
@@ -72,6 +71,41 @@ nav a:hover::after{
    width: 100%;
    transition: width 200ms ease-out;
 }
+
+.header-layout header{
+   display: grid;
+   grid-template-columns: 90.6px 1fr 1fr;
+   align-items: center;
+   margin-bottom: 32px;
+   padding-bottom: 32px;
+}
+
+.header-layout header form {
+   justify-self: right;
+   display: grid;
+   grid-template-columns: 1fr 120px;
+}
+
+.header-layout header form input {
+   border-bottom: 1px solid #eee;
+   padding: 4px 8px;
+   box-sizing: border-box;
+   margin-right: 12px;
+   width: 220px;
+}
+
+.header-layout button[type='submit']{
+   padding: 8px;
+   background-color: #6558C3;
+   color: white;
+   border-radius: 4px;
+   width: 100%;
+   font-size: 16px;
+   font-weight: bold;
+}
+
+
+
 .banner {
    max-width: 940px;
    height: 366px;
@@ -124,34 +158,73 @@ nav a:hover::after{
    margin-bottom: 20px;
    color: #111111;
 }
+/* CHEF CARD */
+.cards-chef {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 
+.card-chef {
+   display: grid;
+   grid-template-columns: 64px 1fr;
+}
+
+.card-chef div{
+   margin-left: 16px;
+   align-self: center;
+}
+
+.card-chef img {
+   border-radius: 54px;
+   width: 64px;
+   height: 64px;
+}
+
+.card-chef .img-title-chef {
+   font-size: 18px;
+   line-height: 21px;
+   color: #111111;
+   margin-bottom: 5px;
+   text-align: left;
+}
+
+.card-chef .img-recipe {
+   font-size: 14px;
+   color: #666666;
+   text-align: left;
+}
+/* RECIPE CARD*/
 .cards {
    max-width: 100%;
    display: grid;
    grid-template-columns: 1fr 1fr 1fr;
    gap: 20px;
 }
-
 .card {
    width: 100%;
    display: flex;
    flex-direction: column;
-   justify-content: center
+   justify-content: center;
 }
+.wrapper h1 {
+   margin: 0;
+   margin-bottom: 16px;
 
+}
 .card img {
-   width: 172px;
-   height: 80px;
+   width: 300px;
+   height: 140px;
    border-radius: 15px;
    margin: 0 auto 20px auto;
 }
+
 
 .img-title {
    font-size: 18px;
    line-height: 21px;
    color: #111111;
    margin-bottom: 5px;
-   text-align: center;
+   text-align:left;
 }
 
 .img-chef {
@@ -159,17 +232,20 @@ nav a:hover::after{
    line-height: 16px;
    color: #777777;
    margin-bottom: 10px;
-   text-align: center;
+   text-align: left;
 }
 
 footer {
-   max-width: 100%;
+   width: 100%;
    height: 62px;
    margin-top: 40px;
    background-color: #EEEEEE;
    display: flex;
    justify-content: center;
    flex-direction: column;
+   position: fixed;
+   bottom: 0;
+  
 }
 
 footer p {
@@ -284,3 +360,14 @@ content {
 .hide.active {
     display: none;
 } 
+
+/* Seacher*/
+
+.search-title h1 {
+   font-size: 24px;
+   color: #111111;
+   margin-bottom: 32px;
+}
+
+
+

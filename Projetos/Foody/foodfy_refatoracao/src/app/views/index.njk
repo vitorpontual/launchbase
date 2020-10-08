@@ -4,7 +4,17 @@
 {% endblock style %}
 
 
+{% block filter%}
+   <form action="/search" method="GET">
+      <input type="text"
+	     name='filter'
+	     placeholder='Buscar uma Receita'
+	     value={{filter}}>
+      <button type='submit'>Filtrar</button>
+   </form>
+{% endblock filter %}
 {% block content %}
+
    <main>
       <div class="banner">
          <div class="banner-text">
@@ -21,7 +31,7 @@
 	       <div class="card" id='{{card.id}}'>
 		  <img src="{{card.image}}" alt="{{card.title}}">
 		  <p class="img-title">{{card.title}}</p>
-		  <p class="img-chef">{{card.author}}</p>
+		  <p class="img-chef">por {{card.chefs_name}}</p>
 	       </div>
 	    {% endfor %}
 	 </div>

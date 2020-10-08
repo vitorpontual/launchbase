@@ -1,0 +1,26 @@
+{% extends 'layout.njk' %}
+
+{% block filter %}
+   <form action="/search" method="GET">
+       <input type="text"
+              name='filter'
+              placeholder='Buscar uma Receita'
+              value={{filter}}>
+       <button type='submit'>Filtrar</button>                                     
+    </form>
+{% endblock filter%}
+{% block content %}
+ <div class="search-title">
+    <h1>Buscando por "{{filter}}"</h1>
+ </div>
+ <div class="cards">
+    {% for card  in recipes %}
+       <div class="card" id="{{card.id}}">
+	  <img src="{{card.image}}" alt="{{card.title}}">
+	  <p class="img-title">{{card.title}}</p>
+	  <p class="img-chef">por {{card.chefs_name}}</p>
+       </div>
+    {% endfor %}
+ </div>
+
+{% endblock content %}
