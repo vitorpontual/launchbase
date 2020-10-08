@@ -178,6 +178,7 @@ nav a:hover::after{
    border-radius: 54px;
    width: 64px;
    height: 64px;
+   object-fit: cover;
 }
 
 .card-chef .img-title-chef {

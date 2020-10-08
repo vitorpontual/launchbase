@@ -14,7 +14,6 @@ exports.show = function(request, response) {
 
       return response.render('admin/recipes/show', {recipes})
    })
-   
 }
 
 exports.create = function(request, response) {
@@ -35,7 +34,7 @@ exports.post = function(request, response) {
    }
 
    Recipe.create(request.body, function(recipes){
-      return responseredirect(`/admin/recipes/${recipes.id}`)
+      return response.redirect(`/admin/recipes/${recipes.id}`)
    })
    
 }
@@ -43,17 +42,30 @@ exports.post = function(request, response) {
 exports.edit = function(request, response){
    Recipe.find(request.params.id, function(recipes){
       if(!recipes) return response.send("Recipe not found!")
+
       recipes.created_at = date(recipes.created_at).format
 
-      return response.render('admin/recipes/edit', {recipes})
+      Recipe.chefSelectOption(function(option){
+	 return response.render('admin/recipes/edit', {recipes, chefsOption: option})
+      })
    })
-   return
 }
 
 exports.put = function(request, response) {
-   return
+   const keys = Object.keys(request.body)
+
+   for(key of keys){
+      if(request.body[key] == '') return response.send("Please, fill all fields")
+   }
+
+   Recipe.update(request.body, function(){
+      return response.redirect(`/admin/recipes/${request.body.id}`)
+   })
+
 }
 
 exports.delete = function(request, response){
-   return
+   Recipe.delete(request.body.id, function(){
+      return response.redirect('/admin/recipes')
+   }) 
 }

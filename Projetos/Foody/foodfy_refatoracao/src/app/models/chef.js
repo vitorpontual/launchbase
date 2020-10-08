@@ -20,7 +20,7 @@ module.exports = {
       INSERT INTO chefs(
 	 name,
 	 avatar_url,
-	 created_at,
+	 created_at
       ) VALUES ($1, $2, $3)
       RETURNING id
       `
@@ -29,6 +29,12 @@ module.exports = {
 	 data.avatar_url,
 	 date(Date.now()).iso
       ]
+
+      db.query(query, values, function(err, results){
+	 if(err) throw `Database Error! ${err}`
+
+	 callback(results.rows[0])
+      })
    },
    find(id, callback){
       db.query(`
@@ -55,5 +61,32 @@ module.exports = {
 	 callback(results.rows)
       }
       )
+   },
+   update(data, callback){
+      const query = `
+      UPDATE chefs SET
+      avatar_url=($1),
+      name=($2)
+      WHERE id = $3
+      `
+      const values = [
+	 data.avatar_url,
+	 data.name,
+	 data.id
+      ]
+
+      console.log(values)
+      db.query(query, values, function(err, resutls){
+	 if(err) throw `Database error! ${err}`
+
+	 callback()
+      })
+   },
+   delete(id, callback){
+      db.query(`DELETE FROM chefs WHERE id = $1`, [id], function(err, results){
+	 if(err) throw `Database Error! ${err}`
+
+	 callback()
+      })
    }
 }

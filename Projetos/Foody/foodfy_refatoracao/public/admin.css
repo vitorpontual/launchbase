@@ -95,6 +95,7 @@
 .chefs .header,
 form section,
 .show,
+.chefs .header,
 .content-admin main .recipes .header {
    display: flex;
    justify-content: space-between;
@@ -115,7 +116,7 @@ form section,
 
 }
 
-.chefs .chef-detail img {
+.chefs .chef-detail .avatar {
    width: 200px;
    height: 200px;
    border-radius: 50%;
@@ -163,6 +164,11 @@ form section,
    line-height: 24px;
    margin-left: 16px;
 }
+
+.chefs .header .buttons button[type='submit']:nth-child(2){
+   width: 123px;
+   height: 37px;
+}
 .header button[type='submit']:nth-child(2),
 .recipes form button[type='submit'] {
    padding: 9px 20px;
@@ -183,8 +189,13 @@ form section,
    gap: 0;
 }
 
+main .chefs .cards-chefs{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   align-items: center;
+}
 .chefs .card-chef,
-.chefs .cards-chefs{
+{
    display:grid;
    grid-template-columns: 64px 1fr;
    align-items: center;
@@ -217,6 +228,7 @@ form section,
    height: 64px;
    border-radius: 50px;
    margin: 0;
+   object-fit: cover;
 }
 
 .chefs .card h1,
@@ -316,3 +328,6 @@ form section,
    outline: none;
    margin-left: 10px;
 }
+
+
+
