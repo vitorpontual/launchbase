@@ -36,7 +36,7 @@ for (let item of menuItems){
 
 function addIngredient(){
    const ingredients = document.querySelector(".ingredients")
-   const fieldContainer = document.querySelectorAll('.ingredients')
+   const fieldContainer = document.querySelectorAll('.ingredient')
 
    const newField = fieldContainer[fieldContainer.length -1].cloneNode(true)
 
