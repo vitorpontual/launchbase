@@ -36,7 +36,7 @@ for (let item of menuItems){
 
 function addIngredient(){
    const ingredients = document.querySelector(".ingredients")
-   const fieldContainer = document.querySelectorAll('.ingredient')
+   const fieldContainer = document.querySelectorAll('.ingredients')
 
    const newField = fieldContainer[fieldContainer.length -1].cloneNode(true)
 
@@ -67,7 +67,6 @@ function addPreparation(){
 document
    .querySelector('.add-prepare')
    .addEventListener('click', addPreparation)
-
 /* for (let card of cards) {
     card.addEventListener("click", function(){
        

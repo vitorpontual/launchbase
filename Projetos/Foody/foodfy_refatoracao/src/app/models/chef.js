@@ -57,7 +57,6 @@ module.exports = {
       WHERE chefs.id = $1
       `, [id], function(err, results){
 	 if(err) `Database Error! ${err}`
-
 	 callback(results.rows)
       }
       )
@@ -75,7 +74,6 @@ module.exports = {
 	 data.id
       ]
 
-      console.log(values)
       db.query(query, values, function(err, resutls){
 	 if(err) throw `Database error! ${err}`
 

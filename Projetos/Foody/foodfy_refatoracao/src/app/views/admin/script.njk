@@ -1,10 +1,19 @@
 <script>
    const formDelete = document.querySelector('#form-delete')
+   let totalRecipes = document.getElementById('total').value
 
-   formDelete.addEventListener('submit', function(event){
-      const confirmation = confirm("Deseja deletar?")
-      if (!confirmation) {
+   function checkRecipes(event) {
+      chefRecipes = document.querySelector("input[id='total']").value
+
+      if(Number(chefRecipes) > 0){
 	 event.preventDefault()
+	 alert("Sorry, you can't delete this chef. Check if Recipe empty")
+      } else {
+	    const confirmation = confirm("Deseja deletar?")
+	    if (!confirmation) {
+	       event.preventDefault()
+	 }
       }
-   })
+   }
+
 </script>
