@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title></title>
+   <style>
+      body {
+         width: 100vw;
+	 min-height: 100vh;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 align-items: center;
+	 box-sizing: border-box;
+      }
+
+      body h1 {
+	 font-size: 60px;
+	 font-family: sans-serif;
+      }
+      form {
+	 width: 320px;
+	 height: 300px;
+      }
+      form input {
+	 width: 100%;
+	 padding: 8px 24px;
+	 outline-style: none;
+	 border: none;
+	 font-size: 15px;
+	 border-bottom: 1px solid gray;
+      }
+
+      body form div h2 {
+	 font-family: sans-serif;
+      }
+
+      ::placeholder{
+	font-size: 16px;
+	font-weight: bold;
+	background-color: none;
+	
+      }
+   </style>
+</head>
+<body>
+   <h1>Desafio 6.1</h1>
+   <form action=''>
+      <div>
+	 <h2>Porcentagem</h2>
+	 <input 
+	    type="text"
+	    name='porcentagem'
+	    placeholder='-,00%'
+	    onkeypress='Mask.apply(this, "formatPercentage")'
+	 >
+      </div>
+      <div>
+	 <h2>CPF</h2>
+	 <input
+	    type="cpf"
+	    name='cpf'
+	    maxlength='11'
+	    placeholder='xxx.xxx.xxx-xx'
+	    onblur='Mask.apply(this, "formatCPF")'
+	 >
+      </div>
+</body>
+<script src="scripts.js"></script>
+</html>
