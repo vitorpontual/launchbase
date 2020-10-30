@@ -33,7 +33,7 @@ header {
 }
 
 header, main{
-   max-width: 940px;
+   width: 940px;
 }
 
 nav{
@@ -128,7 +128,7 @@ nav a:hover::after{
 }
 
 .banner-text {
-   max-width: 31vw;
+   max-width: 350px;
    margin-left: 60px
 }
 
@@ -296,6 +296,7 @@ content {
     height: 280px;
     border-radius: 15px;
     margin-bottom: 30px;
+    object-fit: cover;
 }
 
 .info__details {
@@ -374,5 +375,21 @@ content {
    margin-bottom: 32px;
 }
 
+.pagination {
+   position: fixed;
+   bottom: 80px;
+   margin-top: auto;
+   text-align: center;
+}
 
+.pagination a,
+.pagination span {
+   color: #6558C3;
+   text-decoration: none;
+}
 
+.pagination a:hover {
+   filter: brightness(0.7);
+   font-weight: 700;
+   border-bottom: 1px solid #6558C3;
+}

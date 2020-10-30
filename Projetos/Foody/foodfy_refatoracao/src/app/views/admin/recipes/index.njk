@@ -5,31 +5,40 @@
 <main>
    <div class="recipes">
       <div class="header">
-	 <h1>Gerenciar Receitas</h1>
+        <h1>Gerenciar Receitas</h1>
 
-	 <div class="buttons">
-	    <a id="create-recipes" href="/admin/recipes/create">Criar receitas</a>
-	 </div>
+        <form action="/admin/recipes" method='GET'>
+          <input type="text" name='filter' placeholder="Nome da Receita" valeu='{{filter}}'>
+          <button type='submit'>Filtrar</button>
+        </form>
+        <div class="buttons">
+          <a id="create-recipes" href="/admin/recipes/create">Criar receitas</a>
+        </div>
       </div>
 
       <div class="cards">
 
-	 {% for card in recipes %}
-	    <div class="card">
-	       <div>
-		  <img src="{{card.image}}" alt="{{card.title}}">
-	       </div>
-	       <div>
-		  <h1>{{card.title}}</h1>
-		  <h2>por {{card.chefs_name}}</h2>
-		  <a class="link" href="/admin/recipes/{{card.id}}">Visualizar</a>
-	       </div>
-	    </div>
+      {% for card in recipes %}
+        <div class="card">
+          <div>
+            <img src="{{card.src}}" alt="{{card.title}}">
+          </div>
+          <div>
+            <h1>{{card.title}}</h1>
+            {% if card.chefs_name == null %}
+            <h2>por Anônimo</h2>
+            {% else%}
+            <h2>por {{card.chefs_name}}</h2>
+            {% endif %}
+            <a class="link" href="/admin/recipes/{{card.id}}">Visualizar</a>
+          </div>
+        </div>
 
-	 {% endfor %}
+      {% endfor %}
 
       </div>
-   </div>
+    </div>
+    <div class="pagination" data-page='{{paginate.page}}' data-total='{{paginate.total}}' data-filter="{{filter}}"></div>
 </main>
 
 {% endblock content %}

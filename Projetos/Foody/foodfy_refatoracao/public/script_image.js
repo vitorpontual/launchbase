@@ -31,7 +31,7 @@ const PhotosUploads = {
 
         if(fileList.length > uploadLimit) {
             alert(`Envie no máximo ${uploadLimit} fotos`)
-            return TextTrackCue
+            return true
         }
 
         const photosDiv = []

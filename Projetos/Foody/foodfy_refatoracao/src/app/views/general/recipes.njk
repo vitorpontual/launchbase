@@ -1,4 +1,4 @@
-{% extends 'layout.njk' %}
+{% extends './layout.njk' %}
 
 
 {% block content %}
@@ -6,14 +6,16 @@
       <div class="cards">
 	 {% for card  in recipes %}
 	    <div class="card" id="{{card.id}}">
-	       <img src="{{card.image}}" alt="{{card.title}}">
+	       <img src="" alt="{{card.title}}">
 	       <p class="img-title">{{card.title}}</p>
 	       <p class="img-chef">por {{card.chefs_name}}</p>
 	    </div>
 	 {% endfor %}
       </div>
+        <div class="pagination" data-page='{{paginate.page}}' data-total='{{paginate.total}}' data-filter="{{filter}}"></div>
    </main>
 
-   <script src="/script.js"></script>
+  <script src="/paginate-script.js"></script>
+  <script src="/script.js"></script>
    
 {% endblock content %}
