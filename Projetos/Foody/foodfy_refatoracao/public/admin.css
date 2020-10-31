@@ -27,6 +27,8 @@
    max-width: 940px;
    margin: 0 auto;
    margin-bottom: 32px;
+   justify-content: space-between;
+   align-items: center;
 
 }
 
@@ -77,7 +79,7 @@
    margin: 0 auto;
 }
 
-.content-admin .recipes .header form input {
+.content-admin form .filter-class{
    border-bottom: 1px solid #eee;
    padding:  4px 8px;
    box-sizing: border-box;
@@ -178,13 +180,16 @@ form section,
 
 .chefs .header .buttons button[type='submit']:nth-child(2){
    width: 123px;
-   height: 37px;
+   height: 35px;
 }
+
+.content-admin form .filter-btn,
 .header button[type='submit']:nth-child(2),
 .recipes form button[type='submit'] {
    padding: 9px 20px;
    background-color: var(--primary-color);
    color: #fff;
+   height: 35px;
    font-size: 16px;
    font-weight: bold;
    line-height: 19px;

@@ -21,6 +21,8 @@ exports.index = async (request, response) => {
    
    let results = await Recipe.pagination(params)
    const recipes = results.rows
+   console.log(recipes)
+
    if( recipes == ''){
       const paginate = {
          page
@@ -53,6 +55,7 @@ exports.show = async (request, response) => {
       src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
    }))
 
+
    return response.render('admin/recipes/show', {recipes, files})
 
 
@@ -82,7 +85,6 @@ exports.post = async (request, response) => {
          recipe_id: recipeId
       }))
 
-      console.log(filePromise)
       await Promise.all(filePromise)
 
       return response.redirect(`/admin/recipes/${recipeId}`)
@@ -119,7 +121,7 @@ exports.put = async function(request, response) {
 
    if (request.files.length != 0) {
       const newFilesPromise = request.files.map(file => {
-         File.create({...file, recipe_id: request.body.id})
+         File.createRecipeFiles({...file, recipe_id: request.body.id})
       })
 
       await Promise.all(newFilesPromise)
@@ -131,9 +133,12 @@ exports.put = async function(request, response) {
       const lastIndex = removedFiles.length - 1
       removedFiles.splice(lastIndex, 1)
 
+
       const removedFilesPromise = removedFiles.map(id => {
          File.delete(id)
       })
+
+      console.log(removedFilesPromise)
 
       await Promise.all(removedFilesPromise)
    }
@@ -145,7 +150,6 @@ exports.put = async function(request, response) {
 
 exports.delete = async (request, response) => {
    try {
-      await File.delete(request.body.id)
       await Recipe.delete(request.body.id)
 
       return response.redirect('/admin/recipes')

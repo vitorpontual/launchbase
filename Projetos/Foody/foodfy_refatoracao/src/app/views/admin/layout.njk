@@ -19,11 +19,15 @@
 
    <div class="content-admin">
       <header>
-	 <a class="logo-admin" href="/admin/recipes"><img class="logo" src="/logo2.png" alt="Foodfy Admin"></a>
-	 <div class="navbar">
-	    <a href="/admin/recipes">RECEITAS</a>
-	    <a href="/admin/chefs">CHEFS</a>
-	 </div>
+         <a class="logo-admin" href="/admin/recipes"><img class="logo" src="/logo2.png" alt="Foodfy Admin"></a>
+         <div class="navbar">
+            <a href="/admin/recipes">RECEITAS</a>
+            <a href="/admin/chefs">CHEFS</a>
+         </div>
+         <form action="/admin/recipes" method='GET'>
+            <input type="text" class='filter-class' name='filter' placeholder="Nome da Receita" valeu='{{filter}}'>
+            <button class='filter-btn' type='submit'>Filtrar</button>
+         </form>
       </header>
 
      {% block content %}{% endblock content %}

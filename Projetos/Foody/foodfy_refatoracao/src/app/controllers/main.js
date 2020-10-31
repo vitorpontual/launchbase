@@ -23,7 +23,7 @@ exports.search = async function(request, response){
    let results = await Recipe.findBy(filter)
    const recipes = results.rows
 
-   return response.render('general/search', {recipes, fitler})
+   return response.render('general/search', {recipes, filter})
 }
 
 exports.about = (request, response) => {
