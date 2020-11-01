@@ -3,12 +3,23 @@ const { date } = require('../../lib/utils')
 
 module.exports = {
    all(){
-      return db.query(`
-      SELECT recipes.*, chefs.name AS chefs_name 
+
+      const filePath = `(
+         SELECT files.path
+         FROM files
+         LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)
+         WHERE recipes.id = recipe_files.recipe_id
+      ) AS file_path`
+
+      const query = `
+      SELECT recipes.*, chefs.name As chefs_name, ${filePath}
       FROM recipes
       LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
       ORDER BY recipes.id
-      `)
+      `
+
+
+      return db.query(query)
    },
    create(data){
       query = `
@@ -35,16 +46,29 @@ module.exports = {
 
    },
    find(id){
+      const filePath = `ARRAY(
+         SELECT files.path
+         FROM files
+         LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)
+         WHERE recipes.id = recipe_files.recipe_id
+      )`
+
       return db.query(`
-      SELECT recipes.*, chefs.name AS chef_name
+      SELECT recipes.*, chefs.name AS chef_name, ${filePath} 
       FROM recipes
       LEFT JOIN chefs ON chefs.id = recipes.chef_id
       WHERE recipes.id = $1
       `, [id])
    },
    findBy(filter){
+      const filePath = `(
+         SELECT files.path
+         FROM files
+         LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)
+         WHERE recipes.id = recipe_files.recipe_id
+      ) AS file_path`
       return db.query(`
-      SELECT recipes.*, chefs.name AS chefs_name
+      SELECT recipes.*, chefs.name AS chefs_name, ${filePath}
       FROM recipes
       LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
       WHERE recipes.title ILIKE '%${filter}%'
@@ -77,13 +101,23 @@ module.exports = {
 
       return db.query(query, values)
    },
-   delete(id){
-      return db.query(`DELETE FROM recipes WHERE id = $1`, [id])
+   async delete(id){
+      await db.query(`DELETE FROM recipe_files 
+      WHERE recipe_files.recipe_id = $1;
+      `, [id])
+
+      return db.query(`DELETE FROM recipes WHERE recipes.id = $1`, [id])
    },
    pagination(params){
       const { filter, limit, offset} = params
       let query = '',
       filterQuery= '',
+      filePath = `ARRAY(
+         SELECT files.path
+         FROM files
+         LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)
+         WHERE recipes.id = recipe_files.recipe_id
+      )`,
       totalQuery = `(
          SELECT count(*) FROM recipes
       ) AS total`
@@ -102,7 +136,7 @@ module.exports = {
       }
 
       query = `
-      SELECT recipes.*, ${totalQuery}, chefs.name as chefs_name
+      SELECT recipes.*, ${totalQuery}, chefs.name as chefs_name, ${filePath}
       FROM recipes
       LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
       ${filterQuery}

@@ -29,7 +29,7 @@
 	 <div class="cards">
 	    {% for card in recipes %}
 	       <div class="card" id='{{card.id}}'>
-		  <img src="files[0].src" alt="{{card.title}}">
+		  <img src="{{card.image}}" alt="{{card.title}}">
 		  <p class="img-title">{{card.title}}</p>
 		  <p class="img-chef">por {{card.chefs_name}}</p>
 	       </div>

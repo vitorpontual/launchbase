@@ -1,7 +1,7 @@
 {% extends '../layout.njk' %}
 
 {% block style %}
-<link rel="stylesheet" href="/gallery.css">
+<link rel="stylesheet" href="/css/gallery.css">
 {% endblock style %}
 {% block content %}
 
@@ -17,6 +17,9 @@
 
 	 <form id="form-delete" action="/admin/recipes?_method=DELETE" method='POST'>
 	    <input type="hidden" name='id' value='{{recipes.id}}'>
+       {% for image in files.src %}
+       <input type='hidden' name='files_id' value='{{image.id}}'>
+       {% endfor %}
 	 </form>
 
 	 <form id="form-put" action="/admin/recipes?_method=PUT" method='POST' enctype='multipart/form-data'>

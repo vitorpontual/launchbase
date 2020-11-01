@@ -1,5 +1,6 @@
 const Recipe = require('../models/recipe')
 const Chef = require('../models/chef')
+const file = require('../models/file')
 
 
 exports.index = async function(request, response){
@@ -7,13 +8,39 @@ exports.index = async function(request, response){
 
    if( filter ) {
       let results = await Recipe.findBy(filter)
-      const recipes = results.rows
+      const allRecipes = results.rows
+
+      let recipes = []
+
+      allRecipes.map(recipe => {
+         recipes.push({
+            title,
+            chef_name,
+            image: recipe.array[0].replace('public', '')
+         })
+      })
+
+      console.log(recipes)
 
       return response.render('general/index', {recipes, filters})
    } else {
 
       let results = await Recipe.all()
-      const recipes = results.rows
+      const allRecipes = results.rows
+
+
+      let recipes = []
+
+      allRecipes.map(recipe => {
+         const { file_path, title, chefs_name } = recipe
+         recipes.push({
+            title,
+            chefs_name,
+            image: `${request.protocol}://${request.headers.host}${file_path.replace('public', '')}` 
+         })
+      })
+
+      console.log(recipes)
       return response.render('general/index', {recipes})
    }
 }
@@ -21,7 +48,18 @@ exports.index = async function(request, response){
 exports.search = async function(request, response){
    let { filter } = request.query
    let results = await Recipe.findBy(filter)
-   const recipes = results.rows
+   const allRecipes = results.rows
+
+   recipes = []
+
+   results = await allRecipes.map(recipe => {
+      let {file_path} = recipe
+      recipes.push({
+         ...recipe,
+         image: `${request.protocol}://${request.headers.host}${file_path.replace('public','')}`
+      })
+   })
+
 
    return response.render('general/search', {recipes, filter})
 }
@@ -46,7 +84,20 @@ exports.recipes = async function (request, response) {
    }
    
    let results = await Recipe.pagination(params)
-   const recipes = results.rows
+   const allRecipes = results.rows
+
+   recipes = []
+
+   allRecipes.map(recipe => {
+      const {array} = recipe
+      recipes.push({
+         ...recipe,         
+         image: `${request.protocol}://${request.headers.host}${array[0].replace('public', '')}` 
+      })
+   })
+
+   console.log(recipes)
+
    if( recipes == ''){
       const paginate = {
          page
@@ -57,7 +108,6 @@ exports.recipes = async function (request, response) {
          total: Math.ceil(recipes[0].total/ limit),
          page
       }
-      console.log(paginate)
       return response.render('general/recipes', {recipes, paginate, filter})
    }
 }
@@ -65,7 +115,15 @@ exports.recipesIndex = async function (request, response) {
    let results = await Recipe.find(request.params.id)
    const recipes = results.rows[0]
 
-   return response.render('general/details', {recipes})
+   if(!recipes) return response.send('Recipe not found')
+
+   results = await Recipe.files(recipes.id)
+   const files = results.rows.map(file => ({
+      ...file,
+      src: `${request.protocol}://${request.headers.host}${file.path.replace('public','')}`
+   }))
+  
+   return response.render('general/details', {recipes, files})
 }
 
 exports.chefs = function(request, response) {

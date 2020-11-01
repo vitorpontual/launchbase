@@ -1,6 +1,7 @@
 const Recipe = require('../models/recipe')
 const File = require('../models/file')
 const { date } = require('../../lib/utils')
+const recipe = require('../models/recipe')
 
 
 exports.index = async (request, response) => {
@@ -20,8 +21,18 @@ exports.index = async (request, response) => {
    }
    
    let results = await Recipe.pagination(params)
-   const recipes = results.rows
-   console.log(recipes)
+   const allRecipes = results.rows
+   const recipes = []
+
+
+   results = await allRecipes.map(recipe => {
+      const { array } = recipe
+      recipes.push({
+         ...recipe,
+         image: `${request.protocol}://${request.headers.host}${array[0].replace('public', '')}`
+      })
+   })
+
 
    if( recipes == ''){
       const paginate = {
@@ -33,7 +44,6 @@ exports.index = async (request, response) => {
          total: Math.ceil(recipes[0].total/ limit),
          page
       }
-      console.log(paginate)
       return response.render('admin/recipes/index', {recipes, paginate, filter})
    }
   
@@ -50,6 +60,8 @@ exports.show = async (request, response) => {
    recipes.created_at = date(recipes.created_at).format
 
    results = await Recipe.files(recipes.id)
+   console.log(results.rows)
+
    const files = results.rows.map(file => ({
       ...file,
       src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
@@ -104,6 +116,8 @@ exports.edit = async function(request, response){
 
    results = await Recipe.files(recipes.id)
    let files = results.rows
+   
+
    files = files.map(file => ({
       ...file,
       src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
@@ -138,7 +152,6 @@ exports.put = async function(request, response) {
          File.delete(id)
       })
 
-      console.log(removedFilesPromise)
 
       await Promise.all(removedFilesPromise)
    }
@@ -149,11 +162,23 @@ exports.put = async function(request, response) {
 }
 
 exports.delete = async (request, response) => {
-   try {
+   try{
+      
+      let results = await Recipe.find(request.body.id)
+      const recipes = results.rows[0]
+      
+      results = await Recipe.files(recipes.id)
+      let files = results.rows
+      
+      files = files.map(file => {
+         File.delete(file.id)
+      })
+      
       await Recipe.delete(request.body.id)
-
+      
       return response.redirect('/admin/recipes')
-   } catch(err){
+   }catch (err) {
       console.log(err)
    }
+  
 }
