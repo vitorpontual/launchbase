@@ -1,52 +1,83 @@
 const Chef = require('../models/chef')
+const File = require('../models/file')
 
-exports.index = function(request, response){
-   Chef.all(function(chefs){
-      return response.render('admin/chefs/index', { chefs })
-   })
+exports.index = async function (request, response) {
+   let results = await Chef.all()
+   const chefs = results.rows
+   return response.render('admin/chefs/index', { chefs })
 }
-exports.create  = function(request, response){
+exports.create = function (request, response) {
    return response.render('admin/chefs/create')
 }
-exports.post = function(request, response){
+exports.post = async function (request, response) {
+   try {
+
+      const keys = Object.keys(request.body)
+
+      for (key in keys) {
+         if (request.body[key] == '') return response.send('Please, fill all fields')
+      }
+      if( request.file.length == 0) return response.send('Please, sent at least one image')
+
+      const filePromise = request.files.map(file => File.create({...file}))
+
+      let results =await filePromise[0]
+      const fileId = results.rows[0].id
+
+      results = await Chef.create(requeset.body, fileId)
+      const chefId = aresults.rows[0].id
+
+   } catch (err) {
+      console.log(err)
+   }
+}
+exports.show = async function (request, response) {
+
+   let results = await Chef.find(request.params.id)
+   const chefs = results.rows[0]
+
+   if (!chefs) return response.send('Chef not found')
+
+   results = await Chef.findRecipesChef(chefs.id)
+   const recipes = results.rows
+
+   const recipesChefs = recipes.map(recipe => ({
+      ...recipe,
+      image: `${request.protocol}://${request.headers.host}${recipe.array[0].replace('public', '')}`
+   }))
+
+   return response.render('admin/chefs/show', { chefs, recipesChefs })
+
+}
+exports.edit = async function (request, response) {
+   let results = await Chef.find(request.params.id)
+   const chefs = results.rows[0]
+   console.log(chefs)
+
+   if (!chefs) return response.send("Chefs no found")
+
+   let avatar = await Chef.files(chefs.file_id)
+   avatar = avatar.rows.map(file => ({
+      ...file,
+      src: `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`
+   }))
+
+
+   return response.render('admin/chefs/edit', { chefs })
+}
+exports.put = function (request, response) {
    const keys = Object.keys(request.body)
 
-   for(key in keys){
-      if(request.body[key] == '') return response.send('Please, fill all fields')
-   }
-   Chef.create(request.body,function(chefs){
-      return response.redirect(`/admin/chefs/${chefs.id}`)
-   })
-}
-exports.show = function(request, response){
-   Chef.find(request.params.id, function(chefs){
-      if(!chefs) return response.send('Chef not found')
-      Chef.findRecipesChef(request.params.id, function(recipes){
-	 return response.render('admin/chefs/show', {chefs, recipesChefs: recipes})
-      })
-
-   })
-}
-exports.edit = function(request, response){
-   Chef.find(request.params.id, function(chefs){
-      if(!chefs) return response.send('Chef not Found')
-      console.log(chefs)
-      return response.render('admin/chefs/edit', {chefs})
-   })
-}
-exports.put = function(request, response){
-   const keys = Object.keys(request.body)
-
-   for(key of keys){
-      if(request.body[key] == '') return response.send('Please, fill all fields')
+   for (key of keys) {
+      if (request.body[key] == '') return response.send('Please, fill all fields')
    }
 
-   Chef.update(request.body, function(){
+   Chef.update(request.body, function () {
       return response.redirect(`/admin/chefs/${request.body.id}`)
    })
 }
-exports.delete = function(request, response){
-   Chef.delete(request.body.id, function(){
+exports.delete = function (request, response) {
+   Chef.delete(request.body.id, function () {
       return response.redirect('/admin/chefs')
    })
 }

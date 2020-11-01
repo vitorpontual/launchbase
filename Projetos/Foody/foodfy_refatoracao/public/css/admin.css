@@ -369,3 +369,55 @@ main .chefs .cards-chefs{
    font-weight:700;
    border-bottom: 1px solid #6558c3
 }
+
+
+/* AVATAR UPLOAD */
+
+form .item #avatar-upload {
+   display: flex;
+   align-items: center;
+   width: 139px;
+   height: 149px;
+
+}
+
+form .item #avatar-upload {
+   position: relative;
+
+   overflow: hidden;
+
+   width: 139px;
+   height: 37px;
+   
+}
+
+form .item #avatar-upload span {
+   background: var(--primary-color);
+   color: white;
+   width: 139px;
+   height: 37px;
+
+   font-size: 16px;
+   font-weight: bold;
+
+   border-radius: 4px;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+form .item #avatar-upload input {
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+
+   overflow: hiden;
+   opacity: 0;
+   cursor: pointer;
+}
+
+
+

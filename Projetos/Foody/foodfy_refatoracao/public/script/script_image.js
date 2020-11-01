@@ -124,3 +124,15 @@ const Lightbox = {
         Lightbox.closeButton.style.top = '80px'
     }
 }
+
+function avatarUpload() {
+    const input = document.querySelector('#avatar-input')
+
+    const field = document.createElement('input')
+    field.setAttribute('type', 'url')
+    field.setAttribute('name', 'path')
+    field.style.marginBottom = '15px'
+    field.classList.add('chefAvatar')
+
+    input.appendChild(field)
+}
