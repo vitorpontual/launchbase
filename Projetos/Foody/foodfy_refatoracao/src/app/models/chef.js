@@ -41,6 +41,8 @@ module.exports = {
       const filePath = `ARRAY(
          SELECT files.path
          FROM files
+         LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
+         WHERE recipes.id = recipe_files.recipe_id
       )`
       return db.query(`
       SELECT chefs.*, recipes.*, ${filePath}

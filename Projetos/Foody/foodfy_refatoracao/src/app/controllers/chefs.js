@@ -27,6 +27,8 @@ exports.post = async function (request, response) {
       results = await Chef.create(requeset.body, fileId)
       const chefId = aresults.rows[0].id
 
+      return response.redirect(`/admin/chefs/${chefId}`)
+
    } catch (err) {
       console.log(err)
    }
@@ -36,10 +38,14 @@ exports.show = async function (request, response) {
    let results = await Chef.find(request.params.id)
    const chefs = results.rows[0]
 
+
    if (!chefs) return response.send('Chef not found')
 
    results = await Chef.findRecipesChef(chefs.id)
    const recipes = results.rows
+
+   console.log(recipes)
+
 
    const recipesChefs = recipes.map(recipe => ({
       ...recipe,

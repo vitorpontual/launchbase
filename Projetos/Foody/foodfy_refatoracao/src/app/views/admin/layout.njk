@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name='viewpoert' content='width=device-width, initital-scale=1.0'>
+   <head>
+      <meta charset="UTF-8">
+      <meta name='viewpoert' content='width=device-width, initital-scale=1.0'>
 
-   {% block title%}
-      <title>Admin - Foodfy</title>
-   {% endblock title%}
+      {% block title%}
+         <title>Admin - Foodfy</title>
+      {% endblock title%}
 
-   {% block style %}
-   {% endblock style%}
+      {% block style %}{% endblock style%}
 
-   <link rel="stylesheet" href="/css/style.css">
-   <link rel="stylesheet" href="/css/admin.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-<body>
+      <link rel="stylesheet" href="/css/style.css">
+      <link rel="stylesheet" href="/css/admin.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   </head>
+   <body>
+      <div class="content-admin">
+         <header>
+         {% include './parts/header.njk'%}
+         {% block filter %}
+         {% endblock filter %}
 
-   <div class="content-admin">
-      <header>
-         <a class="logo-admin" href="/admin/recipes"><img class="logo" src="/logo2.png" alt="Foodfy Admin"></a>
-         <div class="navbar">
-            <a href="/admin/recipes">RECEITAS</a>
-            <a href="/admin/chefs">CHEFS</a>
-         </div>
-         <form action="/admin/recipes" method='GET'>
-            <input type="text" class='filter-class' name='filter' placeholder="Nome da Receita" valeu='{{filter}}'>
-            <button class='filter-btn' type='submit'>Filtrar</button>
-         </form>
-      </header>
+         </header>
+      
 
-     {% block content %}{% endblock content %}
-   </div>
-   
-   <script src="/script/script_image.js"></script>
-   <script src='/script/paginate-script.js'></script>
-</body>
+         {% block content %}{% endblock content %}
+      </div>
+
+      <script src="/script/script_image.js"></script>
+      <script src='/script/paginate-script.js'></script>
+   </body>
 </html>

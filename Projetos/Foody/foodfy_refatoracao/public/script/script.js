@@ -64,6 +64,8 @@ function addPreparation(){
    preparations.appendChild(newField)
 }
 
+
+
 document
    .querySelector('.add-prepare')
    .addEventListener('click', addPreparation)

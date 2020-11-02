@@ -1,13 +1,7 @@
 {% extends './layout.njk' %}
 
 {% block filter %}
-   <form action="/search" method="GET">
-       <input type="text"
-              name='filter'
-              placeholder='Buscar uma Receita'
-              value={{filter}}>
-       <button type='submit'>Filtrar</button>                                     
-    </form>
+{% include './parts/filter.njk'%}
 {% endblock filter%}
 {% block content %}
  <div class="search-title">

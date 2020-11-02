@@ -1,13 +1,16 @@
 {% extends '../layout.njk' %}
 
+{% block filter %}
+  {% include '../parts/filter.njk'%}
+{% endblock filter %}
+
 {% block content %}
 
-<main>
-   <div class="recipes">
+  <main>
+    <div class="recipes">
       <div class="header">
         <h1>Gerenciar Receitas</h1>
 
-        
         <div class="buttons">
           <a id="create-recipes" href="/admin/recipes/create">Criar receitas</a>
         </div>
@@ -15,27 +18,28 @@
 
       <div class="cards">
 
-      {% for card in recipes %}
-        <div class="card">
-          <div>
-            <img src="{{card.image}}" alt="{{card.title}}">
+        {% for card in recipes %}
+          <div class="card">
+            <div>
+              <img src="{{card.image}}" alt="{{card.title}}">
+            </div>
+            <div>
+              <h1>{{card.title}}</h1>
+              {% if card.chefs_name == null %}
+                <h2>por Anônimo</h2>
+                {% else%}
+                <h2>por
+                  {{card.chefs_name}}</h2>
+              {% endif %}
+              <a class="link" href="/admin/recipes/{{card.id}}">Visualizar</a>
+            </div>
           </div>
-          <div>
-            <h1>{{card.title}}</h1>
-            {% if card.chefs_name == null %}
-            <h2>por Anônimo</h2>
-            {% else%}
-            <h2>por {{card.chefs_name}}</h2>
-            {% endif %}
-            <a class="link" href="/admin/recipes/{{card.id}}">Visualizar</a>
-          </div>
-        </div>
 
-      {% endfor %}
+        {% endfor %}
 
       </div>
     </div>
     <div class="pagination" data-page='{{paginate.page}}' data-total='{{paginate.total}}' data-filter="{{filter}}"></div>
-</main>
+  </main>
 
 {% endblock content %}

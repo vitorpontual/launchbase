@@ -4,7 +4,7 @@ const { date } = require('../../lib/utils')
 module.exports = {
    all(){
 
-      const filePath = `(
+      const filePath = `ARRAY(
          SELECT files.path
          FROM files
          LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)

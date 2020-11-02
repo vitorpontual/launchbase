@@ -14,8 +14,9 @@ exports.index = async function(request, response){
 
       allRecipes.map(recipe => {
          recipes.push({
-            title,
-            chef_name,
+            id: recipe.id,
+            title: recipe.title,
+            chef_name: recipe.chef_name,
             image: recipe.array[0].replace('public', '')
          })
       })
@@ -33,10 +34,13 @@ exports.index = async function(request, response){
 
       allRecipes.map(recipe => {
          const { file_path, title, chefs_name } = recipe
+
+         console.log(recipe)
          recipes.push({
+            id: recipe.id,
             title,
             chefs_name,
-            image: `${request.protocol}://${request.headers.host}${file_path.replace('public', '')}` 
+            image: `${request.protocol}://${request.headers.host}${file_path[0].replace('public', '')}` 
          })
       })
 
@@ -73,7 +77,7 @@ exports.recipes = async function (request, response) {
 
 
    page = page || 1
-   limit = limit || 4
+   limit = limit || 6
    let offset = limit * (page - 1)
 
    const params = {
@@ -126,8 +130,11 @@ exports.recipesIndex = async function (request, response) {
    return response.render('general/details', {recipes, files})
 }
 
-exports.chefs = function(request, response) {
-   Chef.all(function(chefs){
-      return response.render('general/chefs', {chefs})
-   })
+exports.chefs = async function(request, response) {
+   let results = await Chef.all()
+   const chefs = results.rows
+
+
+   return response.render('general/chefs', {chefs})
+  
 }
