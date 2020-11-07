@@ -22,16 +22,24 @@ exports.index = async (request, response) => {
    
    let results = await Recipe.pagination(params)
    const allRecipes = results.rows
-   const recipes = []
 
+   async function getImage(recipeId){
+      let results = await Recipe.files(recipeId)
+      const files = results.rows.map(file => `${request.protocol}://${request.headers.host}${file.path.replace('public', '')}`)
 
-   results = await allRecipes.map(recipe => {
-      const { array } = recipe
-      recipes.push({
-         ...recipe,
-         image: `${request.protocol}://${request.headers.host}${array[0].replace('public', '')}`
-      })
-   })
+      return files[0]
+   }
+
+   const recipePromise = allRecipes.map( async recipe => {
+      recipe.img = await getImage(recipe.id)
+
+      return recipe
+   } )
+
+   const recipes = await Promise.all(recipePromise)
+
+   console.log(recipes)
+
 
 
    if( recipes == ''){

@@ -375,13 +375,16 @@ content {
    margin-bottom: 32px;
 }
 
-.pagination {
-   position: fixed;
-   bottom: 80px;
-   margin-top: auto;
-   text-align: center;
+main.recipes-page {
+   display: grid;
+   grid-template: 1fr 36px/ 1fr;
 }
 
+main.recipes-page .pagination {
+   margin: 0;
+   align-self: end;
+   justify-self: center;
+}
 .pagination a,
 .pagination span {
    color: #6558C3;

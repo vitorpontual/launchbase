@@ -351,17 +351,24 @@ main .chefs .cards-chefs{
 
 /* PAGINATION */
 
-.pagination {
-   position: fixed;
-   bottom: 80px;
-   margin-top: auto;
-   text-align: center;
+main.admin-recipes {
+   display: grid;
+   grid-template: 42px 600px 16px/ 1fr;
 }
 
+main.admin-recipes .pagination {
+   margin: 0; 
+   align-self: end;
+   justify-self: center;
+}
 .pagination a,
 .pagination span {
    color: #6558c3;
    text-decoration: none;
+}
+
+.pagination a + a {
+   margin-left: 8px;
 }
 
 .pagition a:hover {

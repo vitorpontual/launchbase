@@ -1,18 +1,11 @@
 {% extends './layout.njk' %}
+{% import './parts/section-recipes.njk' as section%}
 
 
 {% block content %}
-   <main>
-      <div class="cards">
-	 {% for card  in recipes %}
-	    <div class="card" id="{{card.id}}">
-	       <img src="{{card.image}}" alt="{{card.title}}">
-	       <p class="img-title">{{card.title}}</p>
-	       <p class="img-chef">por {{card.chefs_name}}</p>
-	    </div>
-	 {% endfor %}
-      </div>
-        <div class="pagination" data-page='{{paginate.page}}' data-total='{{paginate.total}}' data-filter="{{filter}}"></div>
+   <main class='recipes-page'>
+      {{section.recipes('Receitas', '', wrapper, recipes)}}
+      <div class="pagination" data-page='{{paginate.page}}' data-total='{{paginate.total}}' data-filter="{{filter}}"></div>
    </main>
 
   <script src="/script/paginate-script.js"></script>

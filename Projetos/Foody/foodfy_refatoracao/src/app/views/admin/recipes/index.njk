@@ -1,12 +1,12 @@
 {% extends '../layout.njk' %}
-
+{% import '../parts/section-recipes.njk' as section%}
 {% block filter %}
   {% include '../parts/filter.njk'%}
 {% endblock filter %}
 
 {% block content %}
 
-  <main>
+  <main class='admin-recipes'>
     <div class="recipes">
       <div class="header">
         <h1>Gerenciar Receitas</h1>
@@ -16,28 +16,8 @@
         </div>
       </div>
 
-      <div class="cards">
+      {{section.recipes('', '', 'index', recipes)}}
 
-        {% for card in recipes %}
-          <div class="card">
-            <div>
-              <img src="{{card.image}}" alt="{{card.title}}">
-            </div>
-            <div>
-              <h1>{{card.title}}</h1>
-              {% if card.chefs_name == null %}
-                <h2>por Anônimo</h2>
-                {% else%}
-                <h2>por
-                  {{card.chefs_name}}</h2>
-              {% endif %}
-              <a class="link" href="/admin/recipes/{{card.id}}">Visualizar</a>
-            </div>
-          </div>
-
-        {% endfor %}
-
-      </div>
     </div>
     <div class="pagination" data-page='{{paginate.page}}' data-total='{{paginate.total}}' data-filter="{{filter}}"></div>
   </main>
