@@ -23,7 +23,7 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 const currentPage = location.pathname
-const menuItems = document.querySelectorAll('header nav a')
+const menuItems = document.querySelectorAll('#user-page nav a')
 
 for (let item of menuItems){
    if (currentPage.includes(item.getAttribute('href'))){
