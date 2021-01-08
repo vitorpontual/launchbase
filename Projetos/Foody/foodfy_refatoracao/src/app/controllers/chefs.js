@@ -25,7 +25,7 @@ exports.post = async function (request, response) {
       const fileId = results.rows[0].id
 
       results = await Chef.create(requeset.body, fileId)
-      const chefId = aresults.rows[0].id
+      const chefId = results.rows[0].id
 
       return response.redirect(`/admin/chefs/${chefId}`)
 
