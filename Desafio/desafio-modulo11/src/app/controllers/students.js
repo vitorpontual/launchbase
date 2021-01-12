@@ -1,93 +1,122 @@
 const { age, date, grade } = require('../../lib/utils')
 const Student = require('../models/student')
+const Teacher = require('../models/teacher')
 
 module.exports = {
-   index(request, response){
+   async index(request, response){
       let {filter, page, limit} = request.query
 
       page = page || 1
       limit = limit || 2
       let offset = limit * (page - 1)
 
+      const search = ['name', 'email']
       const params = {
 	 filter,
 	 page,
 	 limit,
 	 offset,
-	 callback(students){
-	    schoolyear = []
-	    for ( item of students ){
-	       const student = {
-		  ...item,
-		  grade: grade(item.grade)
-	       }
-	       schoolyear.push(student)
-	    }
-	       console.log(schoolyear)
-	    pagination = {
-	       total: Math.ceil(students[0].total / limit),
-	       page
-	    } 
-	    console.log(pagination)
-	    return response.render('students/index', {students :schoolyear, filter, pagination})
+	 search
+      }
+
+      let students = await Student.paginate(params)
+
+      let schoolyear = []
+      for ( item of students ){
+	 const student = {
+	    ...item,
+	    grade: grade(item.grade)
 	 }
+	 schoolyear.push(student)
       }
-
-      Student.paginate(params)
-   },
-   create(request, response){
-      Student.teacherSelectOption(function(option){
-	 return response.render('students/create', {teacherOption : option})
-      })
-   },
-   post(request, response){
-      const keys = Object.keys(request.body)
-
-      for(key of keys){
-	 if(request.body[key] == '') return response.send('Please, fill all fields')
+      pagination = {
+	 total: Math.ceil(students[0].total / limit),
+	 page
       }
-      Student.create(request.body, function(student){
-	 console.log(student)
-	 return response.redirect(`/students/${student.id}`)
-      })
-   },
-   show(request, response){
-      Student.find(request.params.id, function(student){
-	 if(!student) return response.send('Student Not Found')
+      return response.render('students/index', {students :schoolyear, filter, pagination})
 
+   },
+   async create(request, response){
+      const teacherOption = await Teacher.findAll()
+      return response.render('students/create', {teacherOption})
+   },
+   async post(request, response){
+      try{
+	 let {avatar_url, name, email, birth_date, grade, weekly, teacher} = request.body
+
+	 const student = await Student.create({
+	    avatar_url,
+	    name,
+	    email,
+	    birth_date,
+	    grade,
+	    weekly,
+	    teacher_id: teacher
+	 })
+
+	 return response.redirect(`/students/${student}`)
+      }catch(err){
+	 console.error(err)
+      }
+   },
+   async show(request, response){
+      try{
+	 const student = await Student.find(request.params.id)
 	 student.birth_date = date(student.birth_date).birthday
 	 student.grade = grade(student.grade)
 
+	 const teacher = await Teacher.find(student.teacher_id)
+	 student.teacher_name = teacher.name
+
 	 return response.render('students/show', {student})
-      })
-      return
+      }catch(err){
+	 console.error(err)
+      }
    },
-   edit(request, response){
-      Student.find(request.params.id, function(student){
-	 if(!student) return response.send('Student not found')
+   async edit(request, response){
+      try{
+	 const id = request.params.id
+	 const student = await Student.findOne({where: {id}})
+	 const teacherOption = await Teacher.findAll()
 
 	 student.birth_date = date(student.birth_date).iso
-	 Student.teacherSelectOption(function(options){
-	    return response.render('students/edit', {student, teacherOption : options })
-	 })
-	 
-      })
-   },
 
-   put(request, response){
-      const keys = Object.keys(request.body)
-
-      for(key of keys){
-	 if(request.body[key] == '') return response.send('Please, fill all fields')
+	 return response.render('students/edit', {student, teacherOption})
+      }catch(err){
+	 console.error(err)
       }
-
-      Student.update(request.body, function(){
-	 return response.redirect(`/students/${request.body.id}`)
-      })
    },
-   delete(request, response){
-      Student.delete(request.body.id,  function(){
-	 return response.redirect('/students/')
-      })
+
+   async put(request, response){
+      try{
+	 let {avatar_url, name, email, birth_date, grade, weekly, teacher} = request.body
+
+	 date(birth_date).iso
+	 console.log(request.body)
+
+	 await Student.update(request.body.id, {
+	    avatar_url,
+	    name,
+	    email,
+	    birth_date,
+	    grade,
+	    weekly,
+	    teacher_id: teacher
+	 })
+
+	 return response.redirect(`/students/${request.body.id}`)
+
+      }catch(err){
+	 console.error(err)
+      }
+   },
+   async delete(request, response){
+      try{
+	 await Student.delete(request.body.id)
+
+	 return response.redirect('/students')
+      }catch(err){
+	 console.error(err)
+      }
    },
 }

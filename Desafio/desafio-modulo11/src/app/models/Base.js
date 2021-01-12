@@ -2,7 +2,6 @@ const db = require('../../config/db')
 
 function find(filters, table){
    let query = `SELECT * FROM ${table}`
-   console.log(query)
 
    if(filters){
       Object.keys(filters).map(key => {
@@ -53,7 +52,6 @@ const Base = {
 	 RETURNING id
 	 `
 	 const results = await db.query(query)
-	 console.log(results)
 	 return results.rows[0].id
       }catch(err){
 	 console.error(err)
@@ -71,6 +69,8 @@ const Base = {
 	 let query = `UPDATE ${this.table} SET 
 	 ${update.join(',')} WHERE id = ${id}`
 
+	 console.log(query)
+
 	 await db.query(query)
 	 return
       }catch(err){
@@ -79,6 +79,48 @@ const Base = {
    },
    async delete(id){
       return db.query(`DELETE FROM ${this.table} WHERE id = $1`, [id])
+   },
+   async paginate(params){
+      try{
+	 const {filter, limit, offset, search} = params
+
+	 let query = '',
+	    filterQuery = '',
+	    totalQuery = `(SELECT count(*) FROM ${this.table}) AS total`
+
+
+	 if(filter){
+	    filterQuery = `
+	    WHERE ${this.table}.${search[0]} ILIKE '%${filter}%'
+	    OR ${this.table}.${search[1]} ILIKE '%${filter}%'
+	    `
+	    totalQuery = `(
+	    SELECT count(*) FROM ${this.table}
+	    ${filterQuery}
+	    ) AS total`
+	 }
+	 if(this.table == 'teachers'){
+	    query = `
+	    SELECT ${this.table}.*, ${totalQuery}, count(students) AS total_students
+	    FROM teachers
+	    LEFT JOIN students ON (teachers.id = students.teacher_id)
+	    ${filterQuery}
+	    GROUP BY teachers.id LIMIT $1 OFFSET $2
+	    `
+	 }else{
+	    query = `
+	    SELECT ${this.table}.*, ${totalQuery}
+	    FROM students
+	    ${filterQuery}
+	    LIMIT $1 OFFSET $2
+	    `
+	 }
+
+	 const results = await db.query(query, [limit, offset])
+	 return results.rows
+      }catch(err){
+	 console.error(err)
+      }
    }
 }
 

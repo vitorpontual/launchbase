@@ -10,20 +10,26 @@ module.exports = {
       limit = limit || 2
       let offset = limit * (page - 1)  
 
+      const search = [
+	 'name',
+	 'subjects_taught'
+      ] 
+
       const params = {
 	 filter,
 	 page,
 	 limit,
 	 offset,
+	 search
       }
 
-      let results = await Teacher.paginate(params)
-      const teachers = results.rows
+      let teachers = await Teacher.paginate(params)
 
       const pagination = {
 	 total: Math.ceil(teachers[0].total / limit),
 	 page
       }
+      console.log(pagination)
 
 	 return response.render('teachers/index', {teachers, filter, pagination})
 
@@ -82,13 +88,6 @@ module.exports = {
       return response.render('teachers/edit', {teacher})
    },
    async put(request, response){
-
-      const keys = Object.keys(request.body)
-
-      for(key of keys){
-	 if(request.body[key] == '') return response.send('Please, fill all fields')
-      }
-
       let { avatar_url, name, birth_date, education_level, class_type, subjects_taught } = request.body
 
       console.log(class_type)

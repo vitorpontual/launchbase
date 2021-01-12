@@ -370,4 +370,36 @@ tbody tr .total_students {
    border-bottom: 1px solid var(--primary-color)
 }
 
+/* MESSAGE */
 
+.messages {
+   display: flex;
+   background-color: orange;
+   width: 250px;
+   height: 56px;
+
+   align-items: center;
+   justify-content: center;
+
+   border-radius: 14px;
+   opacity: 1;
+
+   position: fixed;
+   bottom: 20px ;
+   right: 12px;
+
+   animation: hidemessage 400ms 5s ease-out forwards; 
+}
+
+.messages.error {
+    background-color: #e74c3c;
+    color: white;
+    font-weight: bold;
+}
+
+@keyframes hidemessage {
+   to {
+      bottom: -50px;
+      opacity: 0;
+   }
+}

@@ -11,12 +11,8 @@
     {% endblock style %}
 </head>
 <body>
-    <header>
-        <div class="links">
-            <a href="/teachers">Professores</a>
-            <a href="/students">Estudantes</a>
-        </div>
-    </header>
+   {% include 'parts/message.njk'%}
+   {% include 'parts/header.njk'%}
     {% block content %}
     {% endblock content %}
 
