@@ -1,0 +1,26 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+   <div class="card">  
+     <section 
+            class="avatar" style='background: url(https://source.unsplash.com/collection/430471/500x500) no-repeat center center / cover'>
+     </section>
+     <section class="detail success">
+	<div class='success-lottie'></div>
+	<h2>Operação Realizada com Sucesso!</h2>
+	<a href="/">Voltar para a página inicial</a>
+     </section>
+   </div>
+   <script src="/lottie.min.js">
+   </script>
+   <script>
+      const element = document.querySelector('.success-lottie')
+      lottie.loadAnimation({
+	 container: element,
+	 renderer: 'svg',
+	 loop: true,
+	 autoplay: true,
+	 path: '/lottie/success.json'
+      })
+   </script>
+{% endblock content %}

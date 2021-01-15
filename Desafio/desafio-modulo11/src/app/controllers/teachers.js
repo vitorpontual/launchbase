@@ -24,12 +24,14 @@ module.exports = {
       }
 
       let teachers = await Teacher.paginate(params)
+      if(teachers == 0){
+	 return render.response('teachers/index')
+      }
 
       const pagination = {
 	 total: Math.ceil(teachers[0].total / limit),
 	 page
       }
-      console.log(pagination)
 
 	 return response.render('teachers/index', {teachers, filter, pagination})
 
@@ -63,7 +65,7 @@ module.exports = {
 	    created_at
 	 })
 
-	 return response.redirect(`/teachers/${teacher}`)
+	 return response.render('teachers/success')
       }catch(err){
 	 console.error(err)
       }
@@ -90,7 +92,6 @@ module.exports = {
    async put(request, response){
       let { avatar_url, name, birth_date, education_level, class_type, subjects_taught } = request.body
 
-      console.log(class_type)
 
       await Teacher.update(request.body.id, {
 	 avatar_url,
@@ -101,13 +102,13 @@ module.exports = {
 	 subjects_taught,
       })
 
-      return response.redirect(`/teachers/${request.body.id}`)
+      return response.render('teachers/success')
    },
    async delete(request, response){
       try{
 	 await Teacher.delete(request.body.id)
 
-	 return response.redirect(`/teachers`)
+	 return response.render('teachers/delete-teacher')
       }catch(err){
 	 console.error(err)
       }

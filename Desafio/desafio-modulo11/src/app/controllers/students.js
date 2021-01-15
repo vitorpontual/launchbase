@@ -20,6 +20,10 @@ module.exports = {
       }
 
       let students = await Student.paginate(params)
+      console.log(students)
+      if(students == 0){
+	 return response.render('students/index')
+      }
 
       let schoolyear = []
       for ( item of students ){
@@ -54,7 +58,7 @@ module.exports = {
 	    teacher_id: teacher
 	 })
 
-	 return response.redirect(`/students/${student}`)
+	 return response.render('students/success')
       }catch(err){
 	 console.error(err)
       }
@@ -104,7 +108,7 @@ module.exports = {
 	    teacher_id: teacher
 	 })
 
-	 return response.redirect(`/students/${request.body.id}`)
+	 return response.render('students/success')
 
       }catch(err){
 	 console.error(err)
@@ -114,7 +118,7 @@ module.exports = {
       try{
 	 await Student.delete(request.body.id)
 
-	 return response.redirect('/students')
+	 return response.render('students/delete-student')
       }catch(err){
 	 console.error(err)
       }

@@ -403,3 +403,33 @@ tbody tr .total_students {
       opacity: 0;
    }
 }
+
+.detail.success,
+.detail.delete{
+   padding: 0;
+   padding-bottom: 72px;
+
+   text-align: center;
+   margin: auto;
+}
+
+.detail.success .success-lottie{
+   height: 200px;
+}
+
+.detail.delete a,
+.detail.delete h2,
+.detail.success h2,
+.detail.success a {
+   color: white;
+   text-decoration: none;
+}
+
+.detail.success a:hover{
+   text-decoration: underline;
+}
+
+.detail.delete .delete-lottie {
+   height: 160px;
+   margin-bottom: 30px;
+}

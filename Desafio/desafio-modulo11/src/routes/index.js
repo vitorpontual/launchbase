@@ -11,4 +11,8 @@ routes.get('/', (req, res) => {
 routes.use('/students', students)
 routes.use('/teachers', teachers)
 
+routes.get('/i', (req, res) => {
+   return res.render('students/success')
+})
+
 module.exports = routes

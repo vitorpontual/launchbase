@@ -1,0 +1,18 @@
+{
+   "education_level": [
+	 "Médio Completo",
+	 "Ensino Superior",
+	 "Mestrado",
+	 "Doutorado"
+   ],
+      "grade": [
+	 "5EF",
+	 "6EF",
+	 "7EF",
+	 "8EF",
+	 "9EF",
+	 "1EM",
+	 "2EM",
+	 "3EM"
+   ]
+}
